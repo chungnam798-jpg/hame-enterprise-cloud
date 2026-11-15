@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balo, Túi Xách & Phụ Kiện - LOLISHOP OFFICIAL STORE | Trần Mai Anh</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background: #070913; color: #f8fafc; padding-bottom: 60px; line-height: 1.5; overflow-x: hidden; }
+        
+        /* Sticky Top Countdown Header */
+        .top-timer-bar { background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6); color: #fff; text-align: center; padding: 10px 15px; font-weight: 800; font-size: 0.95rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4); display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .pulse-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #22c55e; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.8; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.8; } }
+        
+        .container { max-width: 1240px; margin: 30px auto; padding: 0 16px; }
+        
+        /* Hero Section */
+        .hero-section { background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), rgba(7, 9, 19, 0.9)), #0f172a; border-radius: 24px; padding: 40px 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; overflow: hidden; }
+        .hero-badge { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.85rem; display: inline-block; margin-bottom: 16px; letter-spacing: 1px; }
+        .hero-title { font-size: 2.4rem; font-weight: 900; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1.2; }
+        .hero-subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 24px auto; }
+        .seller-chip { display: inline-flex; align-items: center; gap: 12px; background: rgba(30, 41, 59, 0.8); padding: 8px 20px; border-radius: 40px; border: 1px solid #334155; }
+        .seller-chip strong { color: #38bdf8; }
+        
+        /* Category Filter Pills */
+        .filter-nav { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+        .filter-btn { background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 12px 24px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
+        .filter-btn.active, .filter-btn:hover { background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border-color: #38bdf8; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4); transform: translateY(-2px); }
+        
+        /* Product Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .product-card { background: #131b2e; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .product-card:hover { transform: translateY(-6px); border-color: #38bdf8; box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15); }
+        
+        .badge-row { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; z-index: 10; }
+        .discount-badge { background: #ef4444; color: #fff; font-weight: 900; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); }
+        .mall-badge { background: #d97706; color: #fff; font-weight: 800; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; }
+        
+        .prod-img { background: #0b0f19; height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; }
+        .img-placeholder { color: #38bdf8; font-weight: 800; font-size: 0.95rem; text-align: center; border: 1px dashed rgba(56, 189, 248, 0.3); padding: 15px 20px; border-radius: 12px; }
+        
+        .prod-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .prod-title { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 10px; line-height: 1.4; height: 44px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .prod-stats { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 14px; color: #94a3b8; }
+        .stars { color: #f59e0b; font-weight: 700; }
+        
+        .price-box { margin-bottom: 16px; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 12px; display: flex; align-items: baseline; justify-content: space-between; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .sale-price { font-size: 1.3rem; font-weight: 900; color: #22c55e; }
+        .orig-price { text-decoration: line-through; color: #64748b; font-size: 0.85rem; }
+        
+        .action-btns { display: flex; flex-direction: column; gap: 8px; }
+        .btn-buy { display: block; text-align: center; background: linear-gradient(135deg, #f97316, #ef4444); color: #fff; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 0.9rem; transition: all 0.2s; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); }
+        .btn-buy:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .btn-chat { display: block; text-align: center; background: rgba(30, 41, 59, 0.8); color: #38bdf8; text-decoration: none; padding: 8px; border-radius: 10px; font-weight: 700; font-size: 0.8rem; border: 1px solid rgba(56, 189, 248, 0.3); transition: all 0.2s; }
+        .btn-chat:hover { background: rgba(56, 189, 248, 0.15); }
+        
+        /* Floating Chat Widget */
+        .floating-chat { position: fixed; bottom: 25px; right: 25px; background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; padding: 14px 22px; border-radius: 40px; text-decoration: none; font-weight: 800; font-size: 0.95rem; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s; }
+        .floating-chat:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Top Bar -->
+    <div class="top-timer-bar">
+        <span class="pulse-dot"></span>
+        <span>⚡ SỰ KIỆN NỔ HŨ SHOPEE MALL - GIẢM ĐẾN 70% | KẾT THÚC TRONG 02 : 45 : 18</span>
+    </div>
+
+    <div class="container">
+        <!-- Hero Banner -->
+        <div class="hero-section">
+            <span class="hero-badge">🎒 BALO & ACCESORIES MALL</span>
+            <h1 class="hero-title">TOP 100 SẢN PHẨM BÁN CHẠY NHẤT - BALO, TÚI XÁCH & PHỤ KIỆN</h1>
+            <p class="hero-subtitle">Bảng Xếp Hạng 100 Deal Hot Shopee Mall Được Chọn Lọc & Kiểm Định Chất Lượng 100% Chính Hãng</p>
+            <div class="seller-chip">
+                👤 Quản lý Gian hàng: <strong>Trần Mai Anh</strong> (Fashion Specialist)
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-nav">
+            <button class="filter-btn active">🔥 tất Cả 100 Deal Hot</button>
+            <button class="filter-btn">🏆 Bán Chạy Nhất Shopee</button>
+            <button class="filter-btn">⚡ Flash Sale -70%</button>
+            <button class="filter-btn">🚚 Miễn Phí Vận Chuyển 0đ</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #1</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #1</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">585,600đ</span>
+                        <span class="orig-price">1,464,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_1" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #2</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #2</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">470,500đ</span>
+                        <span class="orig-price">941,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_2" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #3</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #3</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">317,200đ</span>
+                        <span class="orig-price">793,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_3" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #4</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #4</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">155,100đ</span>
+                        <span class="orig-price">517,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_4" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #5</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #5</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">144,600đ</span>
+                        <span class="orig-price">482,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_5" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #6</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #6</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">351,600đ</span>
+                        <span class="orig-price">879,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_6" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #7</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #7</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">640,200đ</span>
+                        <span class="orig-price">1,164,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_7" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #8</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #8</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">558,000đ</span>
+                        <span class="orig-price">1,116,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_8" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #9</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #9</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">239,600đ</span>
+                        <span class="orig-price">599,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_9" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #10</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #10</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">402,300đ</span>
+                        <span class="orig-price">1,341,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_10" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #11</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #11</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">124,800đ</span>
+                        <span class="orig-price">416,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_11" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #12</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #12</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">447,900đ</span>
+                        <span class="orig-price">1,493,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_12" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #13</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #13</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">465,900đ</span>
+                        <span class="orig-price">1,553,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_13" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #14</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #14</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">470,500đ</span>
+                        <span class="orig-price">941,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_14" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #15</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #15</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">341,500đ</span>
+                        <span class="orig-price">683,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_15" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #16</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #16</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">895,700đ</span>
+                        <span class="orig-price">1,378,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_16" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #17</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #17</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">435,000đ</span>
+                        <span class="orig-price">870,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_17" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #18</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #18</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">127,500đ</span>
+                        <span class="orig-price">425,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_18" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #19</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #19</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">288,500đ</span>
+                        <span class="orig-price">577,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_19" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #20</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #20</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">564,200đ</span>
+                        <span class="orig-price">868,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_20" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #21</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #21</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">171,300đ</span>
+                        <span class="orig-price">571,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_21" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #22</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #22</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">702,900đ</span>
+                        <span class="orig-price">1,278,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_22" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #23</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #23</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">532,400đ</span>
+                        <span class="orig-price">968,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_23" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #24</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #24</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">363,000đ</span>
+                        <span class="orig-price">1,210,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_24" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #25</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #25</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">683,800đ</span>
+                        <span class="orig-price">1,052,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_25" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #26</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #26</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">476,450đ</span>
+                        <span class="orig-price">733,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_26" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #27</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #27</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">226,000đ</span>
+                        <span class="orig-price">565,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_27" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #28</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #28</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">271,000đ</span>
+                        <span class="orig-price">542,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_28" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #29</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #29</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">486,850đ</span>
+                        <span class="orig-price">749,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_29" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #30</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #30</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">195,900đ</span>
+                        <span class="orig-price">653,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_30" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #31</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #31</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">346,400đ</span>
+                        <span class="orig-price">866,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_31" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #32</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #32</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">424,000đ</span>
+                        <span class="orig-price">1,060,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_32" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #33</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #33</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">530,200đ</span>
+                        <span class="orig-price">964,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_33" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #34</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #34</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">491,400đ</span>
+                        <span class="orig-price">756,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_34" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #35</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #35</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">457,500đ</span>
+                        <span class="orig-price">1,525,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_35" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #36</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #36</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">676,500đ</span>
+                        <span class="orig-price">1,230,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_36" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #37</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #37</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">532,400đ</span>
+                        <span class="orig-price">968,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_37" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #38</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #38</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">570,500đ</span>
+                        <span class="orig-price">1,141,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_38" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #39</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #39</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">280,200đ</span>
+                        <span class="orig-price">934,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_39" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #40</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #40</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">284,900đ</span>
+                        <span class="orig-price">518,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_40" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #41</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #41</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">426,400đ</span>
+                        <span class="orig-price">1,066,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_41" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #42</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #42</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">405,900đ</span>
+                        <span class="orig-price">738,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_42" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #43</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #43</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">649,000đ</span>
+                        <span class="orig-price">1,180,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_43" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #44</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #44</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">707,500đ</span>
+                        <span class="orig-price">1,415,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_44" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #45</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #45</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">118,200đ</span>
+                        <span class="orig-price">394,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_45" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #46</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #46</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">195,200đ</span>
+                        <span class="orig-price">488,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_46" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #47</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #47</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">567,200đ</span>
+                        <span class="orig-price">1,418,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_47" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #48</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #48</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">17.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">357,600đ</span>
+                        <span class="orig-price">894,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_48" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #49</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #49</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">534,500đ</span>
+                        <span class="orig-price">1,069,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_49" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #50</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #50</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">268,800đ</span>
+                        <span class="orig-price">896,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_50" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #51</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #51</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">252,600đ</span>
+                        <span class="orig-price">842,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_51" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #52</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #52</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">362,000đ</span>
+                        <span class="orig-price">905,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_52" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #53</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #53</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">587,400đ</span>
+                        <span class="orig-price">1,068,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_53" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #54</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #54</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">192,800đ</span>
+                        <span class="orig-price">482,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_54" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #55</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #55</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">546,000đ</span>
+                        <span class="orig-price">1,092,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_55" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #56</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #56</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">474,600đ</span>
+                        <span class="orig-price">1,582,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_56" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #57</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #57</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">478,200đ</span>
+                        <span class="orig-price">1,594,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_57" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #58</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #58</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">422,800đ</span>
+                        <span class="orig-price">1,057,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_58" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #59</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #59</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">549,250đ</span>
+                        <span class="orig-price">845,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_59" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #60</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #60</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">238,150đ</span>
+                        <span class="orig-price">433,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_60" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #61</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #61</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">429,600đ</span>
+                        <span class="orig-price">1,432,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_61" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #62</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #62</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">574,400đ</span>
+                        <span class="orig-price">1,436,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_62" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #63</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #63</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">249,900đ</span>
+                        <span class="orig-price">833,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_63" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #64</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #64</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">540,400đ</span>
+                        <span class="orig-price">1,351,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_64" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #65</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #65</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">391,050đ</span>
+                        <span class="orig-price">711,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_65" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #66</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #66</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">738,100đ</span>
+                        <span class="orig-price">1,342,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_66" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #67</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #67</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">17.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">680,500đ</span>
+                        <span class="orig-price">1,361,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_67" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #68</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #68</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">266,750đ</span>
+                        <span class="orig-price">485,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_68" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #69</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #69</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">17.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">428,400đ</span>
+                        <span class="orig-price">1,071,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_69" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #70</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #70</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">856,050đ</span>
+                        <span class="orig-price">1,317,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_70" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #71</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #71</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">132,000đ</span>
+                        <span class="orig-price">440,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_71" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #72</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #72</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">273,300đ</span>
+                        <span class="orig-price">911,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_72" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #73</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #73</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">307,200đ</span>
+                        <span class="orig-price">768,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_73" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #74</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #74</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">330,850đ</span>
+                        <span class="orig-price">509,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_74" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #75</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #75</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">200,200đ</span>
+                        <span class="orig-price">364,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_75" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #76</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #76</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">321,200đ</span>
+                        <span class="orig-price">584,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_76" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #77</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #77</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">551,850đ</span>
+                        <span class="orig-price">849,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_77" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #78</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #78</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">430,950đ</span>
+                        <span class="orig-price">663,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_78" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #79</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #79</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">441,000đ</span>
+                        <span class="orig-price">882,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_79" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #80</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #80</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">455,950đ</span>
+                        <span class="orig-price">829,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_80" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #81</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #81</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">573,600đ</span>
+                        <span class="orig-price">1,434,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_81" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #82</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #82</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">312,000đ</span>
+                        <span class="orig-price">1,040,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_82" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #83</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #83</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">187,800đ</span>
+                        <span class="orig-price">626,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_83" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #84</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #84</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">526,000đ</span>
+                        <span class="orig-price">1,315,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_84" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #85</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #85</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">519,750đ</span>
+                        <span class="orig-price">945,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_85" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #86</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #86</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">413,400đ</span>
+                        <span class="orig-price">636,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_86" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #87</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #87</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">510,250đ</span>
+                        <span class="orig-price">785,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_87" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #88</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #88</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">257,400đ</span>
+                        <span class="orig-price">396,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_88" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #89</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #89</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">369,200đ</span>
+                        <span class="orig-price">923,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_89" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #90</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #90</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">333,000đ</span>
+                        <span class="orig-price">666,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_90" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #91</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Xách Công Sở Da Bò Cao Cấp Official #91</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">795,600đ</span>
+                        <span class="orig-price">1,224,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_91" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #92</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Ví Nam Cầm Tay Da Bò Nguyên Tấm Official #92</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">296,400đ</span>
+                        <span class="orig-price">741,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_92" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #93</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Du Lịch Đa Năng Chống Nước Official #93</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">436,800đ</span>
+                        <span class="orig-price">1,092,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_93" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #94</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Túi Bao Tử Unisex Streetstyle Official #94</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">677,600đ</span>
+                        <span class="orig-price">1,232,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_94" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #95</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kính Mát Chống Tia UV Polarized Official #95</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">17.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">348,700đ</span>
+                        <span class="orig-price">634,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_95" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #96</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Đồng Hồ Thể Thao Nam Chống Nước Official #96</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">157,200đ</span>
+                        <span class="orig-price">393,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_96" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #97</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Dây Lưng Da Bò Khóa Tự Động Official #97</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">141,300đ</span>
+                        <span class="orig-price">471,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_97" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #98</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mũ Nồi Thời Trang GenZ Official #98</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">544,800đ</span>
+                        <span class="orig-price">1,362,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_98" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #99</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Học Sinh Chống Gù LoliShop Official #99</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">555,500đ</span>
+                        <span class="orig-price">1,111,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_99" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #100</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Balo Laptop Oxford 900D Khóa Số Official #100</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">469,200đ</span>
+                        <span class="orig-price">1,173,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_fashion_accessories_100" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI ANH</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Floating Messenger Chat -->
+    <a href="http://localhost:5000/messenger" class="floating-chat">
+        💬 Chat Trực Tiếp Với Anh
+    </a>
+
+</body>
+</html>

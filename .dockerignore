@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+.github
+.vscode
+.idea
+*.zip
+nurture_logs.txt
+uploads/screenshots/*
+cloudflared.exe

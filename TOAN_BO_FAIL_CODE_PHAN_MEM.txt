@@ -1,0 +1,474 @@
+=================================================================
+🚨 BÁO CÁO TRÍCH XUẤT TOÀN BỘ FAIL CODE & BÁO LỖI PHẦN MỀM
+=================================================================
+
+--- 1. FAIL CODE TỪ BÀI ĐĂNG CƠ SỞ DỮ LIỆU (POSTS TABLE: 65 MỤC LỖI) ---
+
+[MỤC LỖI #1]
+  • ID Bài đăng: auto_db2fea59
+  • Account ID: acc_a2c6d4d1
+  • Thời gian: 2026-07-27T16:12:20.914312
+  • Nội dung tóm tắt: 🛒 THỎA THÍCH SẮN PASS ĐỒ GIA DỤNG & ĐỒ DÙNG GIÁ GỐC THANH LÝ
+  • RAW FAIL CODE / LOG: Lỗi: Cannot find post composer box. Facebook UI may have changed.
+
+[MỤC LỖI #2]
+  • ID Bài đăng: auto_654b9d8e
+  • Account ID: acc_4ec19419
+  • Thời gian: 2026-07-27T15:57:20.914312
+  • Nội dung tóm tắt: ⚡ MÃ GIẢM SỐC 50K + FREESHIP 0Đ TOÀN SÀN SHOPEE/LAZADA THÁNG
+  • RAW FAIL CODE / LOG: Lỗi: Cannot find post composer box. Facebook UI may have changed.
+
+[MỤC LỖI #3]
+  • ID Bài đăng: auto_84ece5ce
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-27T15:42:20.914312
+  • Nội dung tóm tắt: 🎧 BALO LAPTOP GAMING NAM & TAI NGHE BLUETOOTH CHÍNH HÃNG SAL
+  • RAW FAIL CODE / LOG: Lỗi: ElementHandle.click: Timeout 30000ms exceeded.
+Call log:
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+
+
+[MỤC LỖI #4]
+  • ID Bài đăng: auto_6a8986b5
+  • Account ID: acc_34a8389d
+  • Thời gian: 2026-07-27T15:27:20.914312
+  • Nội dung tóm tắt: 🔥 [XẢ KHO FLASH SALE 60%] Balo Laptop Chống Nước Nam Nữ Loli
+  • RAW FAIL CODE / LOG: Lỗi: Cannot find post composer box. Facebook UI may have changed.
+
+[MỤC LỖI #5]
+  • ID Bài đăng: q600_p_acc_1846_7_1b16
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-26T22:19:33.046847
+  • Nội dung tóm tắt: 💥 [VOUCHER SHOPEE MALL 0Đ] -  Săn ngay Balo & Phụ Kiện chính
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #6]
+  • ID Bài đăng: q600_c_acc_39b1_16_2547
+  • Account ID: acc_11cbebc1
+  • Thời gian: 2026-07-26T22:13:45.869521
+  • Nội dung tóm tắt: Trang web chính thức sẵn 100 sản phẩm hot chính hãng Shopee 
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #7]
+  • ID Bài đăng: q600_c_acc_1846_10_fb71
+  • Account ID: acc_1846ba62
+  • Thời gian: 2026-07-26T21:23:45.869521
+  • Nội dung tóm tắt: Chấm hóng deal Balo & Phụ Kiện giảm 50% nha mng! Mã số #10 l
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #8]
+  • ID Bài đăng: q600_p_acc_6be6_10_6604
+  • Account ID: acc_b5bc701c
+  • Thời gian: 2026-07-26T22:15:45.869521
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT CHÍNH HÃNG] -  Săn ngay Balo & Phụ Kiện chính hã
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #9]
+  • ID Bài đăng: quota_p_acc_a8_3_d2cc
+  • Account ID: acc_a829d1f1
+  • Thời gian: 2026-07-26T11:40:27.595043
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #3/10 NGÀY] - Săn ngay sản phẩm HOME_APPLIAN
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #10]
+  • ID Bài đăng: quota_p_acc_a8_2_b882
+  • Account ID: acc_a829d1f1
+  • Thời gian: 2026-07-26T11:28:27.595043
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #2/10 NGÀY] - Săn ngay sản phẩm HOME_APPLIAN
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #11]
+  • ID Bài đăng: quota_p_acc_6b_3_4e49
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-26T11:40:27.595043
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #3/10 NGÀY] - Săn ngay sản phẩm BEAUTY_COSME
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #12]
+  • ID Bài đăng: quota_p_acc_34_4_69b9
+  • Account ID: acc_4ec19419
+  • Thời gian: 2026-07-26T11:52:27.595043
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #4/10 NGÀY] - Săn ngay sản phẩm FASHION_ACCE
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #13]
+  • ID Bài đăng: quota_p_acc_11_3_cca9
+  • Account ID: acc_11cbebc1
+  • Thời gian: 2026-07-26T11:36:46.845959
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #3/10 NGÀY] - Săn ngay sản phẩm SNEAKER_STRE
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #14]
+  • ID Bài đăng: quota_p_acc_4e_1_75db
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-26T11:12:46.845959
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #1/10 NGÀY] - Săn ngay sản phẩm SNEAKER_STRE
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #15]
+  • ID Bài đăng: quota_p_acc_34_1_3388
+  • Account ID: acc_34a8389d
+  • Thời gian: 2026-07-26T11:12:46.845959
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #1/10 NGÀY] - Săn ngay sản phẩm FASHION_ACCE
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #16]
+  • ID Bài đăng: quota_p_acc_39_5_bac8
+  • Account ID: acc_1846ba62
+  • Thời gian: 2026-07-26T12:00:46.845959
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #5/10 NGÀY] - Săn ngay sản phẩm FASHION_ACCE
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #17]
+  • ID Bài đăng: quota_p_acc_a8_3_a720
+  • Account ID: acc_a829d1f1
+  • Thời gian: 2026-07-26T11:36:26.497873
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #3/10 NGÀY] - Săn ngay sản phẩm HOME_APPLIAN
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #18]
+  • ID Bài đăng: quota_p_acc_a8_1_d54e
+  • Account ID: acc_b5bc701c
+  • Thời gian: 2026-07-26T11:12:26.497873
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #1/10 NGÀY] - Săn ngay sản phẩm HOME_APPLIAN
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #19]
+  • ID Bài đăng: quota_p_acc_6b_2_16de
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-26T11:24:26.497873
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #2/10 NGÀY] - Săn ngay sản phẩm BEAUTY_COSME
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #20]
+  • ID Bài đăng: quota_p_acc_b5_7_a6ab
+  • Account ID: acc_b5bc701c
+  • Thời gian: 2026-07-26T12:24:26.497873
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT BÀI #7/10 NGÀY] - Săn ngay sản phẩm HOME_APPLIAN
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #21]
+  • ID Bài đăng: niche_5a2cfabf
+  • Account ID: acc_b5bc701c
+  • Thời gian: 2026-07-25T23:53:52.214411
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT CƯ DÂN CHUNG CƯ] - Rải bài trực tiếp nhóm công k
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #22]
+  • ID Bài đăng: niche_c1cf9a2c
+  • Account ID: acc_a829d1f1
+  • Thời gian: 2026-07-25T23:38:52.214411
+  • Nội dung tóm tắt: 🔥 [DEAL HÓT GIA DỤNG BẾP] - Rải bài trực tiếp nhóm công khai
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #23]
+  • ID Bài đăng: ad_8ba82b3f
+  • Account ID: acc_34a8389d
+  • Thời gian: 2026-07-25T15:04:11.998157
+  • Nội dung tóm tắt: 🔥 [GOOGLE HOT TREND 2026] BẠN ĐANG TÌM BALO LAPTOP CHỐNG NƯỚ
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #24]
+  • ID Bài đăng: cb_87ab5bd6
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-25T15:02:57.401101
+  • Nội dung tóm tắt: 🔥 [HOT SALE CHỈ CÒN 15 XUẤT] GIÀY SNEAKER STREETSTYLE NAM NỮ
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #25]
+  • ID Bài đăng: opt_67e8ad60
+  • Account ID: acc_6be62ca0
+  • Thời gian: 2026-07-25T16:07:10.923548
+  • Nội dung tóm tắt: 👗 [HOT SALE CHƯA TỚI 1XX] Đầm Thiết Kế Sang Chảnh Mặc Tôn Dá
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #26]
+  • ID Bài đăng: opt_0a61f418
+  • Account ID: acc_34a8389d
+  • Thời gian: 2026-07-25T15:57:10.923548
+  • Nội dung tóm tắt: 🛒 [PASS GIÁ GỐC CƯ DÂN] Bộ Hộp Thực Phẩm Giữ Nhiệt Gia Dụng 
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #27]
+  • ID Bài đăng: post_0b5624ce
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #28]
+  • ID Bài đăng: post_4df01b36
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #29]
+  • ID Bài đăng: post_ffeced52
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #30]
+  • ID Bài đăng: post_99fdaf49
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #31]
+  • ID Bài đăng: post_abe2699b
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #32]
+  • ID Bài đăng: post_f37036e1
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #33]
+  • ID Bài đăng: post_359cf964
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #34]
+  • ID Bài đăng: post_15edd145
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #35]
+  • ID Bài đăng: post_961f67db
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #36]
+  • ID Bài đăng: post_b4cd3425
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #37]
+  • ID Bài đăng: post_886c0a03
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #38]
+  • ID Bài đăng: post_3ae9119a
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #39]
+  • ID Bài đăng: post_1e59354e
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #40]
+  • ID Bài đăng: post_f90bc540
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #41]
+  • ID Bài đăng: post_8e2a39c8
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #42]
+  • ID Bài đăng: post_17612b2e
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #43]
+  • ID Bài đăng: post_4f44000e
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #44]
+  • ID Bài đăng: post_4016f378
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #45]
+  • ID Bài đăng: post_cbe78df1
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #46]
+  • ID Bài đăng: post_b2289ddc
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-22T17:28
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Đang đăng ngay...
+
+[MỤC LỖI #47]
+  • ID Bài đăng: post_6cfc3f7b
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-22T17:21
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Đang đăng ngay...
+
+[MỤC LỖI #48]
+  • ID Bài đăng: post_ed7e9cea
+  • Account ID: acc_24251f78
+  • Thời gian: 2026-07-21T10:15:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #49]
+  • ID Bài đăng: post_931d3205
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #50]
+  • ID Bài đăng: post_871da7e3
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #51]
+  • ID Bài đăng: post_4a978aa1
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #52]
+  • ID Bài đăng: post_00ef4ab1
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44:00.000Z
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #53]
+  • ID Bài đăng: post_8cc22435
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44:00.000Z
+  • Nội dung tóm tắt:  🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không b
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #54]
+  • ID Bài đăng: post_2a7d9d60
+  • Account ID: acc_9cdbd595
+  • Thời gian: 2026-07-21T07:44
+  • Nội dung tóm tắt: 🌿 TOP GIA – KHĂN GIẤY CAO CẤP ĐẠT TIÊU CHUẨN 4K 🌿 ✅ Không bụ
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #55]
+  • ID Bài đăng: post_9a0c4f98
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:54:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #56]
+  • ID Bài đăng: post_bd6acabf
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:54:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #57]
+  • ID Bài đăng: post_460238ae
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:54:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #58]
+  • ID Bài đăng: post_247e3e5a
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:54:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #59]
+  • ID Bài đăng: post_2161dad4
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:52:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #60]
+  • ID Bài đăng: post_b7356805
+  • Account ID: acc_35e18971
+  • Thời gian: 2026-07-18T09:52:00.000Z
+  • Nội dung tóm tắt:  🔥 TOP 1 BÁN CHẠY NGÀNH GIẶT GIŨ – AI DÙNG RỒI CŨNG MÊ! 🔥 Bạ
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #61]
+  • ID Bài đăng: post_5775db5e
+  • Account ID: acc_51f8cdbf
+  • Thời gian: 2026-07-15T20:51
+  • Nội dung tóm tắt: Bạn đã sẵn sàng CHOÁNG VÁNG trước làn da CĂNG BÓNG, TRẺ HÓA 
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #62]
+  • ID Bài đăng: post_8aa10a86
+  • Account ID: acc_51f8cdbf
+  • Thời gian: 2026-07-15T12:45
+  • Nội dung tóm tắt: Bạn đã sẵn sàng CHOÁNG VÁNG trước làn da CĂNG BÓNG, TRẺ HÓA 
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #63]
+  • ID Bài đăng: post_6df69344
+  • Account ID: acc_51f8cdbf
+  • Thời gian: 2026-07-15T11:21
+  • Nội dung tóm tắt: Bạn đã sẵn sàng CHOÁNG VÁNG trước làn da CĂNG BÓNG, TRẺ HÓA 
+  • RAW FAIL CODE / LOG: Bài viết đã được gửi và đang chờ phê duyệt từ quản trị viên (Nhóm kiểm duyệt bài).
+
+[MỤC LỖI #64]
+  • ID Bài đăng: post_684b2262
+  • Account ID: acc_51f8cdbf
+  • Thời gian: 2026-07-15T19:30
+  • Nội dung tóm tắt: Đang mơ màng lướt Shopee mà gặp 'Trang không khả dụng'? 😱 Đừ
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+[MỤC LỖI #65]
+  • ID Bài đăng: post_24dc2caa
+  • Account ID: acc_51f8cdbf
+  • Thời gian: 2026-07-09T19:30
+  • Nội dung tóm tắt: Bạn đã sẵn sàng cho cuộc cách mạng mua sắm? 🚀 Quên ngay cảnh
+  • RAW FAIL CODE / LOG: Đang đăng bài...
+
+
+--- 2. FAIL CODE TỪ TƯƠNG TÁC BẢNG TIN (ENGAGEMENT LOGS: 0 MỤC LỖI) ---
+
+
+--- 3. RAW TRACEBACK FAIL CODE TỪ LOG HỆ THỐNG (0 TỆP LOG) ---

@@ -1,0 +1,2788 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FBPoster v1.1 – Phần Mềm Tự Động Hóa Facebook</title>
+  <meta name="description" content="Phần mềm tự động đăng bài, tương tác và tăng tiếp cận trang Facebook, Nhóm và Fanpage chuyên nghiệp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e293b">
+  <link rel="stylesheet" href="style.css?v=1.6">
+  <link rel="stylesheet" href="react_bits_effects.css">
+  <script src="react_bits_effects.js" defer></script>
+  <style>
+    .tunnel-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.25rem 0.5rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+    .tunnel-badge.online .status-indicator {
+      background: #4caf50 !important;
+      box-shadow: 0 0 8px #4caf50;
+    }
+    .tunnel-badge.connecting .status-indicator {
+      background: #ff9800 !important;
+      box-shadow: 0 0 8px #ff9800;
+      animation: pulse 1s infinite alternate;
+    }
+    .tunnel-badge.offline .status-indicator {
+      background: #ff4d4d !important;
+      box-shadow: 0 0 8px #ff4d4d;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <!-- ══════════════ MOBILE HEADER ══════════════ -->
+  <div class="mobile-header">
+    <button id="mobile-sidebar-toggle" class="mobile-toggle-btn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="mobile-logo">
+      <i class="fa-brands fa-facebook logo-icon"></i>
+      <h2>FB<span>Poster</span></h2>
+    </div>
+    <div style="display:flex; align-items:center;">
+      <span class="status-indicator live"></span>
+    </div>
+  </div>
+
+  <div class="bg-glow circle-1"></div>
+  <div class="bg-glow circle-2"></div>
+
+  <!-- ══════════════ SIDEBAR ══════════════ -->
+  <aside class="sidebar">
+    <div class="logo-area">
+      <i class="fa-brands fa-facebook logo-icon"></i>
+      <h2 class="shiny-text">FB<span class="shiny-cyan">Poster</span></h2>
+    </div>
+    <nav class="nav-menu">
+      <a href="#" class="nav-item active" data-tab="dashboard"><i class="fa-solid fa-chart-simple"></i>Bảng điều khiển</a>
+      <a href="#" class="nav-item" data-tab="accounts"><i class="fa-solid fa-user-gear"></i>Quản lý tài khoản</a>
+      <a href="#" class="nav-item" data-tab="create-post"><i class="fa-solid fa-paper-plane"></i>Soạn bài viết</a>
+      <a href="#" class="nav-item" data-tab="bulk"><i class="fa-solid fa-layer-group"></i>Đăng hàng loạt</a>
+      <a href="#" class="nav-item" data-tab="posts"><i class="fa-solid fa-clock-rotate-left"></i>Lịch sử & Hẹn giờ</a>
+      <a href="#" class="nav-item" data-tab="engage"><i class="fa-solid fa-comments"></i>Tương tác tự động</a>
+      <a href="#" class="nav-item" data-tab="autolike"><i class="fa-solid fa-thumbs-up"></i>Auto-Like</a>
+      <a href="#" class="nav-item" data-tab="autojoin"><i class="fa-solid fa-user-plus"></i>Tự động tham gia nhóm</a>
+      <a href="#" class="nav-item" data-tab="autodm"><i class="fa-solid fa-paper-plane"></i>Auto DM & Quét Nhóm</a>
+      <a href="#" class="nav-item" data-tab="nurture"><i class="fa-solid fa-seedling" style="color:var(--success);"></i>Nuôi Nick Tự Động</a>
+      <a href="#" class="nav-item" data-tab="hermes-studio"><i class="fa-solid fa-desktop" style="color:#c084fc;"></i>Hermes Studio Hub</a>
+      <a href="#" class="nav-item" data-tab="insights"><i class="fa-solid fa-radar"></i>Quét Leads</a>
+      <a href="#" class="nav-item" data-tab="claude-schedule"><i class="fa-solid fa-calendar-import"></i>Lịch Claude</a>
+      <a href="#" class="nav-item" data-tab="templates"><i class="fa-solid fa-bookmark"></i>Templates</a>
+      <a href="#" class="nav-item" data-tab="analyzer"><i class="fa-solid fa-circle-nodes"></i>Phân tích Link FB</a>
+      <a href="#" class="nav-item" data-tab="trash"><i class="fa-solid fa-trash"></i>Thùng rác</a>
+      <a href="#" class="nav-item" data-tab="worldmonitor"><i class="fa-solid fa-earth-americas" style="color:#38bdf8;"></i>World Monitor Radar</a>
+      <a href="#" class="nav-item" data-tab="settings"><i class="fa-solid fa-sliders"></i>Cấu hình</a>
+    </nav>
+    <div class="sidebar-footer">
+      <p style="font-weight:600;color:var(--text-muted);">FBPoster v1.1</p>
+      <small>3 workers đang chạy ngầm</small>
+    </div>
+  </aside>
+
+  <!-- ══════════════ MAIN ══════════════ -->
+  <main class="main-content">
+    <header class="top-bar">
+      <div class="page-title"><h1 id="current-tab-title">Bảng điều khiển</h1></div>
+      <div class="system-status" style="display:flex; gap:1.25rem; align-items:center;">
+        <button id="install-pwa-btn" onclick="promptInstallDesktopPWA()" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border: none; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);" title="Cài đặt phần mềm FBPoster thành ứng dụng Desktop độc lập">
+          <i class="fa-solid fa-desktop"></i> Cài Desktop App
+        </button>
+        <button id="global-voice-mic-btn" onclick="toggleVoiceInput()" class="btn btn-secondary btn-sm" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border: none; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);" title="Nói để AI tự điền nội dung vào ô nhập">
+          <i class="fa-solid fa-microphone"></i> Giọng Nói (Tắt)
+        </button>
+        <div id="tunnel-status-badge" class="tunnel-badge offline" style="cursor:pointer;" onclick="checkTunnelStatus(true)" title="Bấm để kiểm tra / làm mới trạng thái">
+          <span class="status-indicator" style="width:8px; height:8px; border-radius:50%; display:inline-block;"></span>
+          <span id="tunnel-status-text">Tunnel: Offline</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.35rem;">
+          <span class="status-indicator live"></span>
+          <span>Hệ thống đang hoạt động</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ TAB: DASHBOARD ══ -->
+    <section id="tab-dashboard" class="tab-content active">
+      <!-- Warning Banner for Cookie Expiration -->
+      <div id="cookie-warning-banner" class="glass-card" style="display:none; background:rgba(255, 77, 77, 0.1); border:1px solid #ff4d4d; margin-bottom:1.5rem; padding:1.25rem; display:flex; align-items:center; gap:1.25rem; border-radius:12px;">
+        <i class="fa-solid fa-triangle-exclamation" style="color:#ff4d4d; font-size:1.8rem; filter:drop-shadow(0 0 4px rgba(255,77,77,0.4));"></i>
+        <div style="flex:1;">
+          <h4 style="color:#ff4d4d; margin:0 0 0.25rem 0; font-weight:bold; font-size:1.05rem;">Phát hiện tài khoản bị lỗi/hết hạn Cookie!</h4>
+          <p id="cookie-warning-text" style="margin:0; font-size:0.85rem; color:var(--text-muted); line-height:1.4;">Tài khoản của bạn đã bị hết hạn cookie hoặc bị Facebook ngắt kết nối. Vui lòng cập nhật lại cookie trong tab "Quản lý tài khoản" để tránh các bài viết lên lịch bị lỗi.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="switchTab('accounts')" style="background:#ff4d4d; color:white; border:none; padding:0.5rem 1rem; border-radius:6px; font-weight:600; cursor:pointer;">Cập nhật ngay</button>
+      </div>
+
+      <div class="stats-grid" id="dashboard-stats">
+        <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-users"></i></div><div class="stat-info"><h3>Tài khoản</h3><p id="stat-active-accounts">0</p></div></div>
+        <div class="stat-card"><div class="stat-icon yellow"><i class="fa-solid fa-clock"></i></div><div class="stat-info"><h3>Chờ đăng</h3><p id="stat-pending-posts">0</p></div></div>
+        <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div><div class="stat-info"><h3>Đã đăng</h3><p id="stat-success-posts">0</p></div></div>
+        <div class="stat-card"><div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div><div class="stat-info"><h3>Thất bại</h3><p id="stat-failed-posts">0</p></div></div>
+        <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-reply"></i></div><div class="stat-info"><h3>Đã phản hồi</h3><p id="stat-engage">0</p></div></div>
+        <div class="stat-card"><div class="stat-icon teal"><i class="fa-solid fa-thumbs-up"></i></div><div class="stat-info"><h3>Đã thả tim</h3><p id="stat-likes">0</p></div></div>
+      </div>
+
+      <div class="glass-card">
+        <div class="card-header">
+          <h2>Hoạt động gần đây</h2>
+          <div style="display:flex;gap:.5rem;">
+            <a href="/api/export/posts" class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i>Xuất CSV</a>
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('posts')">Xem tất cả</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead><tr><th>Tài khoản</th><th>Nơi đăng</th><th>Nội dung</th><th>Thời gian</th><th>Trạng thái</th><th>Nhật ký</th><th>Thao tác</th></tr></thead>
+            <tbody id="recent-posts-list"><tr><td colspan="7" class="text-center text-muted py-4">Chưa có bài đăng nào.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: ACCOUNTS ══ -->
+    <section id="tab-accounts" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card">
+          <h2>Thêm tài khoản mới</h2>
+          <form id="add-account-form" class="standard-form">
+            <div class="form-group">
+              <label for="acc-platform">Nền tảng</label>
+              <select id="acc-platform" onchange="toggleCookiePlaceholder()">
+                <option value="facebook">Facebook</option>
+                <option value="threads">Threads (Meta)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="acc-name">Tên gợi nhớ</label>
+              <input type="text" id="acc-name" placeholder="VD: Tài khoản bán hàng A..." required>
+            </div>
+            <div class="form-group">
+              <label for="acc-team-role">🛡️ Phân Luồng Đội Ngũ Tác Chiến Ban Đầu</label>
+              <select id="acc-team-role" style="background: rgba(15, 23, 42, 0.8); color: #fff; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 6px; padding: 8px 12px; width: 100%;">
+                <option value="team_profile">🥇 Team Profile Vệ Tinh (3 Nick Chốt Đơn VIP)</option>
+                <option value="team_poster" selected>🥈 Team Poster (7 Nick Flash Sale Rải Bài)</option>
+                <option value="team_seeding">🥉 Team Seeding (5 Nick Tương Tác Mồi)</option>
+              </select>
+              <small class="form-hint">💡 Đội ngũ quyết định vai trò tự động hóa của Nick khi nạp vào hệ thống.</small>
+            </div>
+            <div class="form-group">
+              <label for="acc-cookie" id="acc-cookie-label">Cookie Facebook</label>
+              <textarea id="acc-cookie" rows="4" placeholder='Dán cookie JSON từ EditThisCookie hoặc chuỗi c_user=...; xs=...'></textarea>
+              <small class="form-hint" id="acc-cookie-hint">💡 Dùng extension <b>EditThisCookie</b> → Export → dán ở đây. Hoặc paste chuỗi cookie text thô.</small>
+            </div>
+            
+            <!-- Auto Login Section -->
+            <div class="form-group" id="auto-login-section">
+              <h4 style="margin: 15px 0 10px 0; color: var(--text-primary); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Tự động đăng nhập & Làm mới (Tùy chọn)
+              </h4>
+              <div class="form-group" style="margin-top: 10px;">
+                <label for="acc-username">Email / SĐT đăng nhập</label>
+                <input type="text" id="acc-username" placeholder="VD: email@gmail.com hoặc số điện thoại">
+              </div>
+              <div class="form-group">
+                <label for="acc-password">Mật khẩu Facebook</label>
+                <input type="password" id="acc-password" placeholder="Mật khẩu tài khoản">
+              </div>
+              <div class="form-group">
+                <label for="acc-2fa">Khóa thiết lập 2 lớp (2FA Secret Key)</label>
+                <input type="text" id="acc-2fa" placeholder="VD: JBSWY3DPEHPK3PXP...">
+                <small class="form-hint">💡 Chuỗi ký tự viết liền (không dấu cách) dùng để sinh mã xác thực 6 số.</small>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Lưu tài khoản</button>
+          </form>
+        </div>
+        <div class="glass-card flex-2">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+            <h2>Danh sách tài khoản</h2>
+            <button class="btn btn-primary btn-sm bits-ripple-btn" onclick="launchAllBrowsersUI()" style="background: linear-gradient(135deg, #06b6d4, #3b82f6); border:none; color:#fff; font-weight:bold;">
+              <i class="fa-solid fa-window-restore"></i> 🚀 Mở Đồng Loạt 15 Nick Trình Duyệt
+            </button>
+          </div>
+          <div class="accounts-grid" id="accounts-list">
+            <div class="text-center text-muted py-4 w-100">Đang tải...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: CREATE POST ══ -->
+    <section id="tab-create-post" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card flex-2">
+          <h2>Soạn thảo bài viết</h2>
+          <form id="create-post-form" class="standard-form" enctype="multipart/form-data">
+            <input type="hidden" id="post-id">
+            <div class="form-group">
+              <label>Chọn tài khoản</label>
+              <select id="post-account" required><option value="">-- Chọn tài khoản --</option></select>
+            </div>
+            <div class="form-group">
+              <label>Hoặc đăng lên nhóm mục tiêu (Danh sách lưu sẵn)</label>
+              <select id="post-target-list" onchange="togglePostTargetListSelection(this.value)">
+                <option value="">-- Chọn danh sách mục tiêu --</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label>Loại hình đăng</label>
+                <select id="post-type" onchange="toggleTargetIdPlaceholder()">
+                  <option value="profile">Trang cá nhân</option>
+                  <option value="group">Nhóm (Group)</option>
+                  <option value="page">Fanpage</option>
+                </select>
+              </div>
+              <div class="form-group flex-1">
+                <label id="target-id-label">ID mục tiêu</label>
+                <input type="text" id="post-target-id" value="me" required>
+                <small class="form-hint" id="target-id-hint">Với trang cá nhân, điền "me".</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Nội dung bài viết</label>
+              <textarea id="post-content" rows="7" placeholder="Nhập nội dung hoặc dùng Trợ lý AI bên phải để viết..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Hình ảnh (có thể chọn nhiều)</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="post-media" multiple accept="image/*,video/*">
+                <div class="file-upload-box">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p>Kéo thả ảnh/video hoặc click để chọn</p>
+                  <span id="file-count">Chưa chọn file nào</span>
+                </div>
+              </div>
+              <div id="media-preview-container" class="media-preview-container"></div>
+            </div>
+            <div class="info-box">
+              <div class="info-box-title">
+                <i class="fa-solid fa-circle-info"></i> Đăng bài Click vào Ảnh ra Link (Shopee, Zalo, Web...)
+              </div>
+              <ul>
+                <li>Dán đường dẫn (link) trang web vào ô <strong>Nội dung bài viết</strong>.</li>
+                <li><strong>Không tải lên bất kỳ hình ảnh nào</strong> ở ô chọn file ở trên.</li>
+                <li>Khi đăng, hệ thống tự động chờ Facebook tải ảnh xem trước (Link Card). Người xem nhấp vào ảnh sẽ chuyển tới trang web của bạn.</li>
+              </ul>
+            </div>
+
+            <!-- Clickable Image Redirect Options -->
+            <div class="form-group checkbox-group" style="display:flex; align-items:center; gap:0.5rem; margin-top: 0.5rem;">
+              <input type="checkbox" id="post-redirect-toggle" style="width:auto; margin:0;" onchange="toggleRedirectFields()">
+              <label for="post-redirect-toggle" style="margin:0; cursor:pointer; font-weight:500;">Tự tải ảnh lên và chèn link chuyển hướng (Ảnh Clickable)</label>
+            </div>
+            
+            <div id="redirect-fields-group" style="display:none; transition: all 0.3s ease; border: 1px dashed var(--border); padding: 1.25rem; border-radius: var(--radius-sm); margin-top:0.5rem;">
+              <div class="form-group">
+                <label>Đường link đích cần chuyển hướng (Shopee/Zalo/Web...)</label>
+                <input type="url" id="post-redirect-url" placeholder="https://shopee.vn/san-pham-chuyen-huong...">
+              </div>
+              <div class="form-row" style="margin-top:0.75rem;">
+                <div class="form-group flex-1">
+                  <label>Tiêu đề Link Preview (tự chọn)</label>
+                  <input type="text" id="post-redirect-title" placeholder="VD: Giày Thể Thao Cao Cấp 2026">
+                </div>
+                <div class="form-group flex-1">
+                  <label>Mô tả ngắn (tự chọn)</label>
+                  <input type="text" id="post-redirect-desc" placeholder="VD: Giá cực sốc - Click mua ngay!">
+                </div>
+              </div>
+              <small class="form-hint" style="color:var(--warning); display:block; margin-top:0.5rem; line-height: 1.4;">💡 <b>Lưu ý:</b> Bạn phải tải lên đúng <b>1 bức ảnh tự chọn</b> ở ô chọn file phía trên để làm ảnh bìa clickable. Đồng thời, cấu hình "Tên miền công khai" trong Cấu hình để link hoạt động bên ngoài.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="post-first-comment">Bình luận đầu tiên (Tự động bình luận dưới bài đăng)</label>
+              <textarea id="post-first-comment" rows="2" placeholder="Nhập nội dung bình luận tự động ngay sau khi đăng bài thành công..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Hẹn giờ đăng bài</label>
+              <input type="datetime-local" id="post-scheduled-at" required>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" onclick="resetPostForm()">Nhập lại</button>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i>Lên lịch đăng</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="glass-card flex-1" style="align-self: flex-start;">
+          <h2>Trợ lý AI 🤖</h2>
+          <p class="text-muted" style="font-size:.82rem;line-height:1.4;">Tự động viết bài từ link Shopee bằng Gemini và vẽ hình ảnh bằng AI.</p>
+          <div class="standard-form" style="margin-top:.5rem;">
+            <div class="form-group">
+              <label>Link Shopee sản phẩm</label>
+              <input type="url" id="ai-shopee-url" placeholder="https://shopee.vn/tieu-de-san-pham...">
+            </div>
+            <div class="form-group">
+              <label>Yêu cầu thêm (Tùy chọn)</label>
+              <textarea id="ai-prompt-text" rows="3" placeholder="VD: Nhấn mạnh giảm giá, tặng kèm quà, viết giọng hào hứng..."></textarea>
+            </div>
+            <button type="button" id="btn-ai-write" class="btn btn-secondary w-100" onclick="generateAIText()"><i class="fa-solid fa-wand-magic-sparkles"></i> Soạn bài bằng Gemini</button>
+            
+            <hr class="divider">
+            
+            <div class="form-group">
+              <label>Mô tả ảnh AI cần vẽ</label>
+              <textarea id="ai-prompt-image" rows="2" placeholder="VD: Ảnh chụp cận cảnh giày sneaker bóng bẩy trên bục neon, studio light"></textarea>
+            </div>
+            <button type="button" id="btn-ai-image" class="btn btn-secondary w-100" onclick="generateAIImage()"><i class="fa-solid fa-image"></i> Tự động vẽ ảnh AI</button>
+          </div>
+        </div>
+
+        <div class="glass-card flex-1" style="align-self: flex-start; margin-top: 1rem;">
+          <h2>Trích xuất Video 30s 🎥</h2>
+          <p class="text-muted" style="font-size:.82rem;line-height:1.4;">Tự động tải ảnh từ Shopee và ghép thành video TikTok/Reels dài 30s với nhạc nền.</p>
+          <div class="standard-form" style="margin-top:.5rem;">
+            <div class="form-group">
+              <label>Tên sản phẩm (hiển thị trên video)</label>
+              <input type="text" id="video-product-name" placeholder="VD: Túi Xách Công Sở Mới">
+            </div>
+            <div class="form-group">
+              <label>Giá (hiển thị trên video)</label>
+              <input type="text" id="video-product-price" placeholder="VD: 250.000 đ">
+            </div>
+            <div class="form-group">
+              <label>Danh sách link ảnh (mỗi dòng 1 link)</label>
+              <textarea id="video-image-urls" rows="4" placeholder="https://..."></textarea>
+            </div>
+            <button type="button" id="btn-video-generate" class="btn btn-primary w-100" onclick="generateVideo()"><i class="fa-solid fa-video"></i> Tạo Video 30s</button>
+            <div id="video-result" style="margin-top: 1rem; display: none;">
+              <p style="color: var(--success); font-weight: bold; margin-bottom: 0.5rem;">Tạo thành công!</p>
+              <video id="video-preview" controls style="width: 100%; border-radius: 8px;"></video>
+              <a id="video-download" href="#" download class="btn btn-secondary w-100" style="margin-top: 0.5rem;"><i class="fa-solid fa-download"></i> Tải Xuống</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card flex-1" style="align-self: flex-start; margin-top: 1rem;">
+          <h2>Đăng Shopee hàng loạt 🚀</h2>
+          <p class="text-muted" style="font-size:.82rem;line-height:1.4;">Dán danh sách link sản phẩm Shopee của bạn vào ô dưới đây (mỗi dòng một link) để hệ thống tự động bóc tách và xếp lịch đăng bài.</p>
+          <form id="shopee-bulk-form" class="standard-form" style="margin-top:.5rem;">
+            <div class="form-group">
+              <label for="shopee-bulk-urls">Danh sách link Shopee</label>
+              <textarea id="shopee-bulk-urls" rows="6" placeholder="https://shopee.vn/tieu-de-san-pham-A...&#10;https://shopee.vn/tieu-de-san-pham-B..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="shopee-bulk-topic">Chủ đề bài đăng</label>
+              <select id="shopee-bulk-topic" required>
+                <option value="">-- Chọn chủ đề --</option>
+                <option value="Chợ">🛒 Chợ (Tài khoản Shopee - 07:30 / 11:00 / 19:00)</option>
+                <option value="Nội trợ">🏠 Nội trợ (Tài khoản Shopee - 07:30 / 11:00 / 19:00)</option>
+                <option value="Mẹ bỉm">👶 Mẹ bỉm (Tài khoản Shopee - 07:30 / 11:00 / 19:00)</option>
+                <option value="Nấu ăn">🍜 Nấu ăn (Tài khoản Shopee - 07:30 / 11:00 / 19:00)</option>
+                <option value="Gym">💪 Gym (Tài khoản Shopee Lite - 06:00 / 16:00 / 20:30)</option>
+                <option value="Chạy bộ">🏃 Chạy bộ (Tài khoản Shopee Lite - 06:00 / 16:00 / 20:30)</option>
+                <option value="Sinh viên">🎓 Sinh viên (Tài khoản Shopee Lite / Shopee Sale - Xoay vòng)</option>
+                <option value="Phụ nữ độc thân">👩 Phụ nữ độc thân (Tài khoản Shopee VIP - 12:00 / 20:30 / 21:30)</option>
+                <option value="Thời trang">👗 Thời trang (Tài khoản Shopee VIP - 12:00 / 20:30 / 21:30)</option>
+                <option value="Du lịch">✈️ Du lịch (Tài khoản Shopee VIP - 12:00 / 20:30 / 21:30)</option>
+                <option value="Thú cưng">🐾 Thú cưng (Tài khoản Shopee VIP - 12:00 / 20:30 / 21:30)</option>
+                <option value="Công nghệ">📱 Công nghệ (Tài khoản Shopee Lite 2 - 09:00 / 14:00 / 21:00)</option>
+                <option value="Kinh doanh">💼 Kinh doanh (Tài khoản Shopee Lite 2 - 09:00 / 14:00 / 21:00)</option>
+                <option value="Mê xe">🏍️ Mê xe (Tài khoản Shopee Sale - 11:00 / 16:00 / 20:00)</option>
+                <option value="Nhà đất">🏡 Nhà đất (Tài khoản Shopee Sale - 11:00 / 16:00 / 20:00)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-cloud-arrow-up"></i> Tự động cào & Lên lịch</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: CLAUDE SCHEDULE IMPORT ══ -->
+    <section id="tab-claude-schedule" class="tab-content">
+      <div class="layout-split">
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <!-- Card: Điền link Shopee & Import -->
+          <div class="glass-card">
+            <h2>📅 Nhập lịch đăng từ Claude</h2>
+            <p class="text-muted" style="font-size:.85rem;line-height:1.4;">
+              Paste lịch đăng bài dạng JSON từ Claude, điền link Shopee sản phẩm và bấm <b>Import</b> để tự động tạo toàn bộ bài đăng theo lịch. Link Shopee sẽ tự động bình luận dưới mỗi bài sau khi đăng.
+            </p>
+            <form id="claude-schedule-form" class="standard-form" style="margin-top:.75rem;">
+              <div class="form-group">
+                <label for="claude-schedule-account">Tài khoản đăng bài <span style="color:var(--accent)">*</span></label>
+                <select id="claude-schedule-account" required>
+                  <option value="auto_route">-- Tự động phân luồng theo chủ đề --</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="claude-shopee-link">Link Shopee sản phẩm <span style="color:var(--accent)">*</span></label>
+                <input type="url" id="claude-shopee-link" placeholder="https://shope.ee/... hoặc https://shopee.vn/..." style="width:100%;">
+                <small class="form-hint">Link này sẽ được tự động bình luận dưới mỗi bài đăng sau khi đăng thành công.</small>
+              </div>
+              <div class="form-group">
+                <label for="claude-schedule-json">Dữ liệu lịch đăng (JSON)</label>
+
+                <!-- Nút tải file JSON lên -->
+                <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;">
+                  <label for="claude-json-file" class="btn btn-secondary btn-sm" style="cursor:pointer;margin:0;">
+                    <i class="fa-solid fa-file-arrow-up"></i> Tải file JSON lên
+                  </label>
+                  <input type="file" id="claude-json-file" accept=".json,application/json" style="display:none;" onchange="loadJsonFile(this)">
+                  <span id="claude-json-filename" style="font-size:.8rem;color:var(--text-muted);"></span>
+                </div>
+
+                <textarea id="claude-schedule-json" rows="10" placeholder='[
+  {
+    "name": "Bài 1 - Thứ 2",
+    "content": "Nội dung bài viết...",
+    "scheduled_at": "2026-07-01T07:30",
+    "target_id": "https://www.facebook.com/groups/123456/",
+    "type": "group"
+  },
+  ...
+]' style="font-family:monospace;font-size:.8rem;"></textarea>
+                <small class="form-hint">Định dạng JSON: mảng các object gồm <code>name</code>, <code>content</code>, <code>scheduled_at</code>, <code>target_id</code>, <code>type</code> (group/profile/page). Hoặc tải file <code>.json</code> bằng nút bên trên.</small>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="fa-solid fa-calendar-plus"></i> Import &amp; Lên lịch tất cả
+              </button>
+            </form>
+          </div>
+
+          <!-- Card: Kết quả import -->
+          <div id="claude-schedule-result" class="glass-card" style="display:none;">
+            <h2>📊 Kết quả nhập lịch</h2>
+            <div id="claude-schedule-result-content"></div>
+          </div>
+        </div>
+
+        <!-- Cột phải: hướng dẫn -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div class="glass-card">
+            <h2>📖 Hướng dẫn</h2>
+            <ol style="font-size:.85rem;line-height:1.8;padding-left:1.2rem;">
+              <li>Mở Claude share link của bạn và copy toàn bộ lịch đăng bài dưới dạng JSON.</li>
+              <li>Paste JSON vào ô <b>Dữ liệu lịch đăng</b> ở bên trái.</li>
+              <li>Điền link Shopee sản phẩm vào ô <b>Link Shopee</b>.</li>
+              <li>Chọn tài khoản Facebook sẽ đăng bài (hoặc để trống để dùng tài khoản đầu tiên).</li>
+              <li>Bấm <b>Import &amp; Lên lịch tất cả</b>.</li>
+              <li>Hệ thống sẽ tạo toàn bộ bài đăng theo đúng lịch. Link Shopee sẽ được <b>tự động bình luận</b> dưới mỗi bài sau khi đăng.</li>
+            </ol>
+            <hr class="divider">
+            <p class="text-muted" style="font-size:.82rem;">
+              <b>Lưu ý:</b> Bạn có thể chỉnh sửa nội dung từng bài sau khi import tại tab <b>Lịch sử &amp; Hẹn giờ</b>. Link Shopee có thể thay đổi bất kỳ lúc nào trong phần <b>Cấu hình hệ thống → Mẫu bình luận Shopee</b>.
+            </p>
+          </div>
+
+          <!-- Card: mẫu JSON -->
+          <div class="glass-card">
+            <h2>📋 Mẫu JSON</h2>
+            <pre style="background:rgba(0,0,0,.3);border-radius:.5rem;padding:.75rem;font-size:.72rem;overflow-x:auto;white-space:pre-wrap;">[
+  {
+    "name": "Bài 1 - Thứ 2 tuần 1",
+    "content": "🔥 Chào buổi sáng cả nhà!\n\nHôm nay mình giới thiệu sản phẩm siêu hot...\n#shopee #muasắm",
+    "scheduled_at": "2026-07-07T07:30",
+    "target_id": "https://www.facebook.com/groups/123456789/",
+    "type": "group"
+  },
+  {
+    "name": "Bài 2 - Thứ 2 tuần 1",
+    "content": "💥 Flash Sale hôm nay...",
+    "scheduled_at": "2026-07-07T11:00",
+    "target_id": "https://www.facebook.com/groups/987654321/",
+    "type": "group"
+  }
+]</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="tab-bulk" class="tab-content">
+      <div class="layout-split">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div class="glass-card">
+            <h2>Tạo chiến dịch đăng hàng loạt</h2>
+            <p class="text-muted" style="font-size:.85rem;">Đăng 1 nội dung tới nhiều Nhóm/Trang cùng lúc. Mỗi mục tiêu sẽ tạo thành 1 bài đăng riêng trong hàng đợi.</p>
+            <form id="bulk-form" class="standard-form">
+              <div class="form-group">
+                <label>Tên chiến dịch</label>
+                <input type="text" id="bulk-name" placeholder="VD: Campaign tháng 6..." required>
+              </div>
+              <div class="form-group">
+                <label>Chọn tài khoản đăng</label>
+                <select id="bulk-account" required><option value="">-- Chọn tài khoản --</option></select>
+              </div>
+              <div class="form-group">
+                <label>Nội dung bài đăng</label>
+                <textarea id="bulk-content" rows="5" placeholder="Nội dung sẽ được gửi tới tất cả mục tiêu..." required></textarea>
+                <div class="info-box">
+                  <div class="info-box-title">
+                    <i class="fa-solid fa-circle-info"></i> Click vào ảnh ra link dẫn (Shopee, Zalo...)
+                  </div>
+                  <p class="text-muted" style="margin: 0; font-size: 0.8rem; line-height: 1.4;">Dán đường dẫn trang web vào ô nội dung. Bài đăng hàng loạt sẽ tự động hiển thị dưới dạng hình ảnh clickable liên kết đến trang web đó.</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Áp dụng danh sách mục tiêu đã lưu</label>
+                <select id="bulk-apply-target-list" onchange="applySavedTargetList(this.value)">
+                  <option value="">-- Chọn danh sách mục tiêu --</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Danh sách mục tiêu (Link Nhóm / Trang / ID)</label>
+                <textarea id="bulk-targets" rows="5" placeholder="Dán link Nhóm, link Trang hoặc ID/Username vào đây (mỗi mục tiêu một dòng)...&#10;Ví dụ:&#10;https://www.facebook.com/groups/123456789/&#10;https://www.facebook.com/my_page_username&#10;123456789" required></textarea>
+                <small class="form-hint">Hệ thống sẽ tự động nhận diện từ link Nhóm, link Trang hoặc ID của bạn.</small>
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                  <button type="button" class="btn btn-secondary btn-xs" onclick="showSaveTargetListModal()"><i class="fa-solid fa-floppy-disk"></i> Lưu ô nhập này làm danh sách mới</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Thời gian bắt đầu đăng</label>
+                <input type="datetime-local" id="bulk-scheduled-at" required>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-layer-group"></i>Tạo chiến dịch</button>
+            </form>
+          </div>
+
+          <div class="glass-card">
+            <h2>Quản lý danh sách mục tiêu</h2>
+            <p class="text-muted" style="font-size:.85rem; margin-bottom: 1rem;">Lưu trữ danh sách các link Nhóm hoặc Trang để sử dụng lại nhanh chóng.</p>
+            <div class="table-container" style="max-height: 250px; overflow-y: auto;">
+              <table class="data-table">
+                <thead><tr><th>Tên danh sách</th><th>Số lượng</th><th>Thao tác</th></tr></thead>
+                <tbody id="target-lists-table-body">
+                  <tr><td colspan="3" class="text-center text-muted">Chưa có danh sách nào.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card flex-2" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div>
+            <div class="card-header">
+              <h2>Chiến dịch đã tạo</h2>
+              <button class="btn btn-secondary btn-sm" onclick="fetchBulkGroups()"><i class="fa-solid fa-rotate"></i>Làm mới</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr><th>Tên chiến dịch</th><th>Tổng bài</th><th>Thành công</th><th>Thất bại</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+                <tbody id="bulk-list"><tr><td colspan="6" class="text-center text-muted">Chưa có chiến dịch nào.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div style="border-top: 1px solid var(--border); padding-top: 1.5rem;">
+            <div class="card-header">
+              <h2><i class="fa-solid fa-triangle-exclamation" style="color:var(--danger)"></i> Nhóm kiểm duyệt gắt (Cần hạn chế)</h2>
+              <button class="btn btn-secondary btn-sm" onclick="fetchModeratedGroups()"><i class="fa-solid fa-rotate"></i>Cập nhật</button>
+            </div>
+            <p class="text-muted" style="font-size:.85rem; margin-bottom: 1rem;">Hệ thống tự động ghi nhận các nhóm thường xuyên để bài ở chế độ "Chờ duyệt". Bạn nên hạn chế đăng vào các nhóm này để tối ưu lượng reach.</p>
+            <div class="table-container" style="max-height: 250px; overflow-y: auto;">
+              <table class="data-table">
+                <thead><tr><th>ID Nhóm</th><th>Tên nhóm</th><th>Số lần chờ duyệt</th></tr></thead>
+                <tbody id="moderated-groups-list"><tr><td colspan="3" class="text-center text-muted">Chưa ghi nhận nhóm nào.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: POSTS HISTORY ══ -->
+    <section id="tab-posts" class="tab-content">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2>Danh sách bài đăng</h2>
+          <div style="display:flex;gap:.5rem;">
+            <a href="/api/export/posts" class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i>Xuất CSV</a>
+            <button class="btn btn-primary btn-sm" onclick="switchTab('create-post')"><i class="fa-solid fa-plus"></i>Tạo bài mới</button>
+          </div>
+        </div>
+        <div id="bulk-posts-actions-panel" style="display:none; padding: .6rem 1rem; background: var(--bg-hover); border-radius: var(--radius-sm); margin-bottom: 1rem; align-items: center; justify-content: space-between; border: 1px solid var(--border);">
+          <span id="bulk-posts-selected-count" style="font-weight:600; font-size:.87rem; color:var(--text-muted);">Đã chọn 0 bài viết</span>
+          <button class="btn btn-danger btn-sm" onclick="bulkDeletePosts()"><i class="fa-solid fa-trash"></i> Xóa các mục đã chọn</button>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead><tr><th><input type="checkbox" id="select-all-posts" onchange="toggleSelectAllPosts(this)"></th><th>Tài khoản</th><th>Kiểu</th><th>Nơi đăng</th><th>Nội dung</th><th>Lịch đăng</th><th>Trạng thái</th><th>Kết quả</th><th></th></tr></thead>
+            <tbody id="all-posts-list"><tr><td colspan="9" class="text-center text-muted py-4">Đang tải...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: FB-ENGAGE ══ -->
+    <section id="tab-engage" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card flex-1" style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div>
+            <h2>Kịch bản phản hồi bình luận</h2>
+            <p class="text-muted" style="font-size:.83rem;margin-top:.4rem;">Hệ thống sẽ quét bình luận mới định kỳ và tự động Thích + Trả lời theo luật bên dưới.</p>
+          </div>
+          <form id="add-rule-form" class="standard-form">
+            <div class="form-group">
+              <label>Từ khóa kích hoạt</label>
+              <input type="text" id="rule-keywords" placeholder="inbox, gia bao nhieu, ib (cách bởi dấu phẩy) hoặc * để áp dụng tất cả" required>
+            </div>
+            <div class="form-group">
+              <label>Nội dung phản hồi tự động</label>
+              <textarea id="rule-reply-text" rows="4" placeholder="Dạ, cảm ơn bạn đã quan tâm! Page đã gửi tin nhắn chi tiết cho bạn rồi nhé 🙏" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Lưu kịch bản</button>
+          </form>
+          <hr class="divider">
+          <div>
+            <h2>Quét tương tác ngay bài cụ thể</h2>
+            <form id="manual-scan-form" class="standard-form" style="margin-top:.75rem;">
+              <div class="form-group">
+                <label>Tài khoản thực hiện</label>
+                <select id="scan-account" required><option value="">-- Chọn tài khoản --</option></select>
+              </div>
+              <div class="form-group">
+                <label>Link bài viết Facebook</label>
+                <input type="url" id="scan-post-url" placeholder="https://www.facebook.com/..." required>
+              </div>
+              <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i>Quét & Phản hồi ngay</button>
+            </form>
+          </div>
+          <hr class="divider">
+          <div>
+            <h2>Kích hoạt bình luận dạo bằng chatbot AI</h2>
+            <form id="manual-autofeed-form" class="standard-form" style="margin-top:.75rem;">
+              <div class="form-group">
+                <label>Tài khoản thực hiện</label>
+                <select id="autofeed-run-account" required><option value="">-- Chọn tài khoản --</option></select>
+              </div>
+              <div class="form-group">
+                <label>Nguồn tương tác</label>
+                <select id="autofeed-run-source">
+                  <option value="groups">Nhóm đã tham gia (Groups Feed)</option>
+                  <option value="home">Bảng tin chính (News Feed)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-robot"></i> Chạy bình luận dạo ngay</button>
+            </form>
+          </div>
+        </div>
+        <div class="glass-card flex-2">
+          <h2>Danh sách kịch bản</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>Từ khóa</th><th>Nội dung phản hồi</th><th>Trạng thái</th><th></th></tr></thead>
+              <tbody id="rules-list"><tr><td colspan="4" class="text-center text-muted">Chưa có kịch bản nào.</td></tr></tbody>
+            </table>
+          </div>
+          <div class="card-header" style="margin-top:1rem;">
+            <h2>Nhật ký tương tác</h2>
+            <a href="/api/export/logs" class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i>Xuất CSV</a>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>Người gửi</th><th>Bình luận</th><th>Phản hồi</th><th>Thời gian</th><th>KQ</th><th></th></tr></thead>
+              <tbody id="engage-logs-list"><tr><td colspan="6" class="text-center text-muted">Chưa có nhật ký.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: AUTO-LIKE ══ -->
+    <section id="tab-autolike" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card flex-1">
+          <h2>Thêm mục tiêu Auto-Like</h2>
+          <p class="text-muted" style="font-size:.83rem;margin-top:.3rem;">Hệ thống sẽ định kỳ truy cập các Nhóm/Trang bên dưới và tự động thả tim các bài viết mới nhất để tăng exposure cho tài khoản của bạn.</p>
+          <form id="autolike-form" class="standard-form" style="margin-top:.5rem;">
+            <div class="form-group">
+              <label>Tài khoản thực hiện</label>
+              <select id="autolike-account" required><option value="">-- Chọn tài khoản --</option></select>
+            </div>
+            <div class="form-group">
+              <label>Áp dụng danh sách mục tiêu đã lưu (Tùy chọn)</label>
+              <select id="autolike-apply-target-list" onchange="applySavedTargetListToAutolike(this.value)">
+                <option value="">-- Chọn danh sách mục tiêu --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tên mục tiêu (Bỏ trống nếu thêm hàng loạt)</label>
+              <input type="text" id="autolike-name" placeholder="VD: Nhóm bán hàng TPHCM">
+            </div>
+            <div class="form-group">
+              <label>Link Nhóm/Trang Facebook (Nhập mỗi dòng một link)</label>
+              <textarea id="autolike-url" rows="4" placeholder="Dán link Nhóm hoặc Trang vào đây (mỗi link một dòng)...&#10;VD: https://www.facebook.com/groups/123/" required></textarea>
+            </div>
+            <div class="form-group checkbox-group" style="display:flex; align-items:center; gap:0.5rem; margin-bottom: 1rem;">
+              <input type="checkbox" id="autolike-comment-toggle" style="width:auto; margin:0;" onchange="toggleCommentStyleGroup()">
+              <label for="autolike-comment-toggle" style="margin:0; cursor:pointer; font-weight:500;">Tự động bình luận chéo (Auto-Comment)</label>
+            </div>
+            <div class="form-group" id="autolike-comment-style-group" style="display:none; transition: all 0.3s ease;">
+              <label>Kiểu bình luận</label>
+              <select id="autolike-comment-style" onchange="toggleSpintaxTextGroup()">
+                <option value="AI">AI (Gemini 2.5 Flash phân tích nội dung tự động)</option>
+                <option value="spintax">Spintax (Mẫu câu ngẫu nhiên chống spam)</option>
+              </select>
+            </div>
+            <div class="form-group" id="autolike-comment-text-group" style="display:none; transition: all 0.3s ease;">
+              <label>Nội dung bình luận mẫu (Hỗ trợ Spintax)</label>
+              <textarea id="autolike-comment-text" rows="3" placeholder="VD: {Hay quá anh ơi|Bài viết ý nghĩa quá|Rất bổ ích}! Chúc anh/chị {ngày mới tốt lành|buôn may bán đắt}!"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Thêm mục tiêu</button>
+          </form>
+        </div>
+        <div class="glass-card flex-2">
+          <h2>Danh sách mục tiêu Auto-Like</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>Tên mục tiêu</th><th>Tài khoản</th><th>Link</th><th>Lần chạy cuối</th><th>Trạng thái</th><th></th></tr></thead>
+              <tbody id="autolike-targets-list"><tr><td colspan="6" class="text-center text-muted">Chưa có mục tiêu nào.</td></tr></tbody>
+            </table>
+          </div>
+          <h2 style="margin-top:1rem;">Nhật ký thả tim</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>URL bài viết</th><th>Thời gian</th><th>Kết quả</th></tr></thead>
+              <tbody id="autolike-logs-list"><tr><td colspan="3" class="text-center text-muted">Chưa có nhật ký.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: AUTO-JOIN ══ -->
+    <section id="tab-autojoin" class="tab-content">
+      <div class="layout-split">
+        <div style="display:flex; flex-direction:column; gap:1.5rem; flex: 1;">
+          <div class="glass-card">
+            <h2>Tự động tham gia nhóm</h2>
+            <form id="autojoin-form" class="standard-form">
+              <div class="form-group">
+                <label for="autojoin-account">Chọn tài khoản</label>
+                <select id="autojoin-account" class="account-select" required></select>
+              </div>
+              
+              <div class="form-group">
+                <label for="autojoin-source-type">Hình thức tham gia</label>
+                <select id="autojoin-source-type" onchange="toggleAutojoinInputs()">
+                  <option value="urls">Danh sách URL / ID nhóm</option>
+                  <option value="keyword">Tìm kiếm theo từ khóa</option>
+                </select>
+              </div>
+              
+              <div class="form-group" id="autojoin-urls-group">
+                <label for="autojoin-urls">Danh sách URL hoặc ID nhóm (Mỗi nhóm một dòng)</label>
+                <textarea id="autojoin-urls" placeholder="https://www.facebook.com/groups/123456&#10;https://www.facebook.com/groups/chomaytinh&#10;7890123" rows="6"></textarea>
+              </div>
+              
+              <div class="form-group" id="autojoin-keyword-group" style="display:none;">
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="autojoin-keyword">Từ khóa tìm kiếm</label>
+                    <input type="text" id="autojoin-keyword" placeholder="VD: shopee affiliate, hội nuôi mèo...">
+                  </div>
+                  <div class="form-group col-auto" style="width:120px;">
+                    <label for="autojoin-limit">Số nhóm tối đa</label>
+                    <input type="number" id="autojoin-limit" value="5" min="1" max="30">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="autojoin-delay">Tần suất chờ (giây)</label>
+                  <input type="number" id="autojoin-delay" value="15" min="5" placeholder="VD: 15">
+                </div>
+                <div class="form-group col" style="display:flex; align-items:center; margin-top:1.5rem;">
+                  <label class="custom-checkbox-container" style="color:var(--text-color); font-weight:500;">
+                    <input type="checkbox" id="autojoin-answer-questions" checked>
+                    <span class="checkbox-checkmark"></span>
+                    Trả lời câu hỏi bằng AI
+                  </label>
+                </div>
+              </div>
+              
+              <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa-solid fa-user-plus"></i> Bắt đầu tự động tham gia
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="syncPublicGroups()">
+                  <i class="fa-solid fa-arrows-rotate"></i> Quét & Đồng bộ Nhóm Công Khai
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="glass-card">
+            <h2>Chiến dịch tham gia theo chủ đề</h2>
+            <form id="autojoin-topic-form" class="standard-form">
+              <div class="form-group">
+                <label for="autojoin-topic-account">Chọn tài khoản</label>
+                <select id="autojoin-topic-account" class="account-select" required></select>
+              </div>
+              
+              <div class="form-group">
+                <label for="autojoin-topics">Danh sách chủ đề (Mỗi dòng một chủ đề)</label>
+                <textarea id="autojoin-topics" placeholder="Thời trang giá sỉ&#10;Chợ đồ cũ tphcm&#10;Việc làm sinh viên" rows="4" required></textarea>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="autojoin-topic-limit">Số nhóm/chủ đề</label>
+                  <input type="number" id="autojoin-topic-limit" value="50" min="5" max="100">
+                </div>
+                <div class="form-group col">
+                  <label for="autojoin-topic-delay">Tần suất chờ (giây)</label>
+                  <input type="number" id="autojoin-topic-delay" value="15" min="5" placeholder="VD: 15">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="custom-checkbox-container" style="color:var(--text-color); font-weight:500;">
+                  <input type="checkbox" id="autojoin-topic-prioritize" checked>
+                  <span class="checkbox-checkmark"></span>
+                  Ưu tiên nhóm công khai & đông thành viên
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="margin-top:0.5rem; width: 100%;">
+                <i class="fa-solid fa-bullhorn"></i> Bắt đầu chiến dịch chủ đề
+              </button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="glass-card">
+          <div class="card-header">
+            <h2>Tiến trình & Kết quả</h2>
+            <button class="btn btn-secondary btn-sm" onclick="clearAutojoinLogs()">
+              <i class="fa-solid fa-eraser"></i> Xóa nhật ký
+            </button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nhóm / Từ khóa</th>
+                  <th>Thời gian</th>
+                  <th>Trạng thái</th>
+                  <th>Thông tin chi tiết</th>
+                </tr>
+              </thead>
+              <tbody id="autojoin-logs-list">
+                <tr><td colspan="4" class="text-center text-muted">Chưa chạy tiến trình nào.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: AUTO DM ══ -->
+    <section id="tab-autodm" class="tab-content">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-paper-plane" style="color:var(--primary);margin-right:10px;"></i> Chiến dịch Auto DM (Chuyên gia Tư vấn)</h2>
+        </div>
+        <p style="color:var(--text-muted); margin-bottom: 20px;">Tự động quét thành viên từ một Nhóm Facebook và khởi chạy Bot chuyên gia gửi tin nhắn hàng loạt (Spintax & AI).</p>
+        
+        <!-- Mục tiêu nhóm -->
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label>Áp dụng danh sách mục tiêu đã lưu</label>
+          <select id="autodm-apply-target-list" onchange="applyAutoDMTargetList(this.value)">
+            <option value="">-- Chọn danh sách mục tiêu --</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label>
+            <i class="fa-solid fa-users" style="color:var(--primary); margin-right:6px;"></i>
+            Danh sách Nhóm mục tiêu (mỗi nhóm một dòng)
+          </label>
+          <textarea id="autodm-group-urls" rows="5" class="form-control"
+            placeholder="Dán link các Nhóm Facebook vào đây, mỗi nhóm một dòng...&#10;Ví dụ:&#10;https://www.facebook.com/groups/123456789/&#10;https://www.facebook.com/groups/hoimepassdo&#10;https://www.facebook.com/groups/muabanphutong"></textarea>
+          <small class="form-hint" style="color:var(--text-sec); font-size:0.8rem; margin-top:5px; display:block;">
+            Robot sẽ lần lượt quét từng nhóm và nhắn tin cho các thành viên.
+          </small>
+          <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+            <button type="button" class="btn btn-secondary btn-xs" onclick="showAutoDMSaveModal()">
+              <i class="fa-solid fa-floppy-disk"></i> Lưu danh sách này
+            </button>
+            <span id="autodm-group-count" style="font-size:0.8rem; color:var(--text-sec); align-self:center;"></span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label><i class="fa-solid fa-tags" style="color:var(--accent); margin-right:6px;"></i> Ngành hàng / Kịch bản tư vấn</label>
+          <select id="autodm-industry" class="form-control">
+            <option value="thoi_trang">👗 Thời trang & Phụ kiện (Sành điệu, Gu ăn mặc, Bảng size)</option>
+            <option value="my_pham">💄 Mỹ phẩm & Skincare (Làm đẹp, Routine da, Mẫu thử)</option>
+            <option value="thuc_pham">🥗 Thực phẩm & Health (Healthy, Ăn uống gia đình, Mẫu thử)</option>
+            <option value="default">📦 Khác / Chung chung (Tư vấn tổng hợp)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label>URL Sản phẩm đính kèm (Để trống nếu không cần)</label>
+          <input type="text" id="autodm-product-url" class="form-control" placeholder="Ví dụ: https://shopee.vn/san-pham-x">
+        </div>
+        
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="toggle-switch">
+            <input type="checkbox" id="autodm-high-risk">
+            <span class="slider"></span>
+          </label>
+          <span style="margin-left: 10px; font-weight: 500;">Chế độ Vượt rào (High-Risk Mode)</span>
+          <p style="color:#ff4d4d; font-size:0.85rem; margin-top:5px; margin-left: 50px;">⚠️ Cảnh báo: Cho phép quét lên tới 150 người. Rất dễ bị Facebook khóa tài khoản (Check-point). Khuyến cáo nên tắt (Chế độ an toàn 50 người).</p>
+        </div>
+        
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+          <button class="btn btn-primary" onclick="startAutoDMCampaign()" style="flex:2; justify-content:center; padding:12px; font-size:15px;">
+            <i class="fa-solid fa-play"></i> Bắt đầu Quét & Gửi Tin (Warm-up DM)
+          </button>
+          <button class="btn btn-secondary" onclick="startAutoDMFollowup()" style="flex:1; justify-content:center; padding:12px; font-size:15px; background: rgba(139, 92, 246, 0.2); border-color: var(--accent); color: #c084fc;">
+            <i class="fa-solid fa-rotate"></i> Chăm sóc lại (Follow-up)
+          </button>
+        </div>
+
+        <hr style="border-color: var(--border); margin: 25px 0;">
+
+        <!-- Analytics Dashboard for Auto DM -->
+        <div class="autodm-analytics" style="margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3><i class="fa-solid fa-chart-pie" style="color:var(--info);margin-right:8px;"></i> Báo Cáo A/B Testing & CRM Leads</h3>
+            <div style="display:flex; gap:8px;">
+              <a href="/api/autodm/export-leads" class="btn btn-secondary btn-sm" style="background: rgba(16,185,129,0.2); color:#10b981; border-color:rgba(16,185,129,0.3);"><i class="fa-solid fa-file-csv"></i> Xuất CSV Leads</a>
+              <button class="btn btn-secondary btn-sm" onclick="fetchAutoDMStats()"><i class="fa-solid fa-rotate-right"></i> Làm mới</button>
+            </div>
+          </div>
+          <p style="color:var(--text-sec); margin-bottom: 20px; font-size: 0.9rem;">Đo lường tự động hiệu quả của các kịch bản tin nhắn mồi chài.</p>
+          
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+              <canvas id="abTestChart" style="max-height: 250px;"></canvas>
+            </div>
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 10px;">
+              <div class="card" style="padding: 12px; background: rgba(24, 27, 33, 0.5);">
+                <div style="font-size: 0.8rem; color: var(--text-sec);">Variant A (Đi thẳng vấn đề)</div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);" id="stat-var-a">0</div>
+              </div>
+              <div class="card" style="padding: 12px; background: rgba(24, 27, 33, 0.5);">
+                <div style="font-size: 0.8rem; color: var(--text-sec);">Variant B (Khen ngợi nịnh nọt)</div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent);" id="stat-var-b">0</div>
+              </div>
+              <div class="card" style="padding: 12px; background: rgba(24, 27, 33, 0.5);">
+                <div style="font-size: 0.8rem; color: var(--text-sec);">Tỷ lệ gửi thành công</div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--success);" id="stat-rate">0%</div>
+              </div>
+              <div class="card" style="padding: 12px; background: rgba(24, 27, 33, 0.5);">
+                <div style="font-size: 0.8rem; color: var(--text-sec);">Thất bại (Bị chặn / Lỗi)</div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--danger);" id="stat-failed">0</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Live Log Terminal -->
+          <div style="margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="color: var(--text-sec); font-size: 0.95rem;">
+                <i class="fa-solid fa-terminal" style="color:var(--success); margin-right:6px;"></i>
+                Live Feed (Cập nhật tự động mỗi 2 giây)
+              </h4>
+              <span id="dm-live-badge" style="font-size:0.75rem; padding:3px 10px; border-radius:99px; background:rgba(16,185,129,0.15); color:var(--success); border:1px solid rgba(16,185,129,0.3);">
+                <i class="fa-solid fa-circle" style="font-size:0.5rem; animation: pulse 1.5s infinite;"></i> LIVE
+              </span>
+            </div>
+            <div id="autodm-live-log"
+              style="background: #0a0c0f; padding: 14px; border-radius: 8px; font-size: 0.82rem;
+                     font-family: 'Courier New', monospace; color: #7dd3a8;
+                     max-height: 220px; overflow-y: auto; border: 1px solid rgba(16,185,129,0.2);
+                     line-height: 1.6;">
+              <span style="color:#555;">Đang chờ Bot khởi động... Hãy nhập Group URL và bấm Bắt đầu!</span>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: NURTURE ══ -->
+    <section id="tab-nurture" class="tab-content">
+      <div class="glass-card mb-4" style="padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+          <div>
+            <h2 style="margin: 0; color: var(--success); font-size: 1.5rem; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-seedling"></i> Hệ Thống Nuôi Nick Facebook Tự Động (Account Nurturing)
+            </h2>
+            <p style="color: var(--text-sec); margin-top: 5px; font-size: 0.9rem;">
+              Tự động giả lập hành vi người thật: Lướt Bảng tin, thả tim bài viết, xem Reels & Video Watch, bình luận dạo để nâng cao điểm tin nhiệm (Trust Score) chống checkpoint.
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="startNurtureCampaign()" style="padding: 12px 24px; font-size: 15px; background: linear-gradient(135deg, #10b981, #059669); border: none;">
+            <i class="fa-solid fa-bolt"></i> Kích Hoạt Nuôi Nick Ngay
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 16px; border-radius: 10px;">
+            <h4 style="color: var(--success); margin: 0 0 6px 0;"><i class="fa-solid fa-newspaper"></i> 1. Lướt Bảng Tin</h4>
+            <p style="font-size: 0.82rem; color: var(--text-sec); margin: 0;">Cuộn trang Newsfeed ngẫu nhiên 4-7 lần với độ trễ từ 2-5 giây như người dùng thật.</p>
+          </div>
+          <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 16px; border-radius: 10px;">
+            <h4 style="color: var(--success); margin: 0 0 6px 0;"><i class="fa-solid fa-heart"></i> 2. Thả Tim Bài Viết</h4>
+            <p style="font-size: 0.82rem; color: var(--text-sec); margin: 0;">Ngẫu nhiên tương tác Thả tim / Like 3-5 bài viết công khai trên Bảng tin.</p>
+          </div>
+          <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 16px; border-radius: 10px;">
+            <h4 style="color: var(--success); margin: 0 0 6px 0;"><i class="fa-solid fa-film"></i> 3. Xem Watch / Reels</h4>
+            <p style="font-size: 0.82rem; color: var(--text-sec); margin: 0;">Truy cập chuyên mục Video/Watch, giữ màn hình 30-60s xem video ngẫu nhiên.</p>
+          </div>
+          <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 16px; border-radius: 10px;">
+            <h4 style="color: var(--success); margin: 0 0 6px 0;"><i class="fa-solid fa-comments"></i> 4. Bình Luận Dạo AI</h4>
+            <p style="font-size: 0.82rem; color: var(--text-sec); margin: 0;">Gõ phím giả lập người thật để lại các câu khen ngợi nhẹ nhàng bằng Spintax/AI.</p>
+          </div>
+        </div>
+
+        <!-- Quick Add Account Form -->
+        <div style="margin: 20px 0; background: rgba(16, 185, 129, 0.05); padding: 18px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--success); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-user-plus"></i> Thêm Nhanh Tài Khoản Facebook Cần Nuôi
+          </h3>
+          <form id="quick-nurture-account-form" onsubmit="handleQuickAddNurtureAccount(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; align-items: flex-end;">
+            <div>
+              <label style="font-size: 0.8rem; color: var(--text-sec); display: block; margin-bottom: 4px;">Tên Gợi Nhớ Nick</label>
+              <input type="text" id="qn-name" placeholder="VD: Nick Phụ 01 (Bán Bỉm)" required style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; color: var(--text-sec); display: block; margin-bottom: 4px;">Cookie Facebook (Chuỗi c_user, xs...)</label>
+              <input type="text" id="qn-cookie" placeholder="Dán chuỗi Cookie vào đây..." required style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; color: var(--text-sec); display: block; margin-bottom: 4px;">Proxy Riêng (Tùy chọn: http://user:pass@ip:port)</label>
+              <input type="text" id="qn-proxy" placeholder="Tùy chọn Proxy..." style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 9px 15px; background: linear-gradient(135deg, #10b981, #059669); border: none;">
+                <i class="fa-solid fa-plus"></i> Thêm & Nuôi Ngay
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Bảng Thống Kê Chỉ Số Nuôi Nick Realtime -->
+        <div style="margin: 25px 0; background: rgba(0,0,0,0.2); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-chart-bar" style="color: var(--primary);"></i> Thống Kê Tiến Trình & Chỉ Số Nuôi Nick
+            </h3>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-xs" onclick="toggleSelectAllNurtureAccounts(true)"><i class="fa-solid fa-check-double"></i> Chọn tất cả</button>
+              <button class="btn btn-secondary btn-xs" onclick="toggleSelectAllNurtureAccounts(false)"><i class="fa-solid fa-xmark"></i> Bỏ chọn</button>
+            </div>
+          </div>
+          <div id="nurture-accounts-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;">
+            <div class="text-muted" style="font-size: 0.88rem;">Đang tải danh sách tài khoản & chỉ số nuôi nick...</div>
+          </div>
+        </div>
+
+        <!-- Quét & Kết Bạn Bạn Bè Đối Thủ -->
+        <div style="margin: 25px 0; background: rgba(139, 92, 246, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #c084fc; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-bullseye"></i> Quét & Kết Bạn Tự Động Từ Bạn Bè Đối Thủ (Target Friend Extractor)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Nhập URL trang cá nhân đối thủ / KOLs. Robot sẽ tự động bóc tách danh sách bạn bè của họ và gửi lời mời kết bạn để thu hút đúng tệp khách hàng tiềm năng!
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="url" id="target-friend-url" placeholder="https://www.facebook.com/profile_link" style="flex: 2; min-width: 260px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            <input type="number" id="target-friend-limit" value="25" min="5" max="100" style="width: 80px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;" title="Số lượng kết bạn">
+            <button class="btn btn-primary" onclick="startTargetFriendExtractor()" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); border: none; padding: 10px 20px;">
+              <i class="fa-solid fa-user-plus"></i> Bắt Đầu Kết Bạn
+            </button>
+          </div>
+        </div>
+
+        <!-- AI Video Studio & Multi-Destination Publisher -->
+        <div style="margin: 25px 0; background: rgba(236, 72, 153, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(236, 72, 153, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #f472b6; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-clapperboard"></i> AI Video Studio & Đăng Tự Động Nơi Đăng (Multi-Publisher)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động dựng Video ngắn quảng cáo sản phẩm chuẩn phong cách Reels/TikTok và đăng bài tới kênh bạn chọn!
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="video-prod-title" placeholder="Tên sản phẩm (VD: Ví nữ thời trang ELLY)" style="flex: 2; min-width: 220px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            <input type="number" id="video-prod-price" placeholder="Giá bán (VNĐ)" value="500000" style="width: 130px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            <select id="video-destination" style="width: 170px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+              <option value="all">🚀 Tất cả các kênh</option>
+              <option value="reels">🎬 Facebook Reels</option>
+              <option value="profile">👤 Trang cá nhân</option>
+              <option value="groups">👥 Nhóm Facebook</option>
+            </select>
+            <button class="btn btn-primary" onclick="startAIVideoStudio()" style="background: linear-gradient(135deg, #ec4899, #db2777); border: none; padding: 10px 20px;">
+              <i class="fa-solid fa-film"></i> Tạo Video & Đăng Ngay
+            </button>
+          </div>
+        </div>
+
+        <!-- Enterprise Affiliate Revenue Hub -->
+        <div style="margin: 25px 0; background: rgba(234, 179, 8, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(234, 179, 8, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #facc15; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-sack-dollar"></i> Chuyển Đổi Số & Tăng Trưởng Doanh Thu Affiliate (Shopee / Lazada)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động săn Deal Flash Sale giảm > 50%, chuyển sang link Affiliate SubID và theo dõi doanh thu hoa hồng trực tiếp theo thời gian thực!
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 15px;">
+            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(234,179,8,0.2); text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-sec);">TỔNG LINK AFFILIATE</div>
+              <div id="aff-total-links" style="font-size: 1.4rem; font-weight: bold; color: #facc15;">0</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(234,179,8,0.2); text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-sec);">TỔNG LƯỢT CLICK THU VỀ</div>
+              <div id="aff-total-clicks" style="font-size: 1.4rem; font-weight: bold; color: #38bdf8;">0</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(234,179,8,0.2); text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-sec);">TỔNG HOA HỒNG DỰ KIẾN</div>
+              <div id="aff-total-commission" style="font-size: 1.4rem; font-weight: bold; color: #4ade80;">0 VNĐ</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="aff-raw-url" placeholder="Dán link sản phẩm Shopee/Lazada vào đây..." style="flex: 2; min-width: 240px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            <button class="btn btn-primary" onclick="convertAffiliateLinkUI()" style="background: linear-gradient(135deg, #eab308, #ca8a04); border: none; padding: 10px 20px;">
+              <i class="fa-solid fa-link"></i> Tạo Link Affiliate
+            </button>
+            <button class="btn btn-secondary" onclick="triggerFlashSaleScraperUI()" style="background: rgba(234, 179, 8, 0.2); color: #facc15; border-color: rgba(234, 179, 8, 0.4); padding: 10px 20px;">
+              <i class="fa-solid fa-bolt"></i> Săn Deal Flash Sale Ngay
+            </button>
+          </div>
+        </div>
+
+        <!-- Hermes Procedural Memory & Skill Center -->
+        <div style="margin: 25px 0; background: rgba(59, 130, 246, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #60a5fa; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-brain"></i> Hermes Agent Procedural Memory & Skill Center (Trí Nhớ Dài Hạn AI)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động tích lũy Trí nhớ dài hạn khách hàng (Sở thích, Ngân sách, Tính cách) và nạp Kỹ năng bán hàng mô-đun hóa để chốt đơn dứt điểm!
+          </p>
+          <div id="hermes-memory-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-height: 220px; overflow-y: auto;">
+            <div class="text-muted" style="font-size: 0.85rem;">Đang tải danh sách Trí nhớ khách hàng từ Hermes Engine...</div>
+          </div>
+        </div>
+
+        <!-- GBrain Knowledge Graph & Signal Detector Center -->
+        <div style="margin: 25px 0; background: rgba(168, 85, 247, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #c084fc; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-circle-nodes"></i> GBrain Knowledge Graph & Signal Detector (Garry Tan Architecture)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động phát hiện tín hiệu nhu cầu (Signal Detector) và dựng Đồ thị tri thức (Knowledge Graph) liên kết thực thể Khách hàng ➔ Ngân sách ➔ Sở thích!
+          </p>
+          <div id="gbrain-graph-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; max-height: 220px; overflow-y: auto;">
+            <div class="text-muted" style="font-size: 0.85rem;">Đang tải mạng lưới Đồ thị tri thức GBrain...</div>
+          </div>
+        </div>
+
+        <!-- AI Cross-Sell & Revenue Export Studio -->
+        <div style="margin: 25px 0; background: rgba(20, 184, 166, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(20, 184, 166, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #2dd4bf; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-bullseye"></i> AI Cross-Sell Studio & Báo Cáo Doanh Thu (Revenue Maximizer)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động đọc Trí nhớ & Đồ thị GBrain để tạo ưu đãi bán chéo 1-1 cho tệp khách VIP và xuất báo cáo CSV!
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="cross-sell-cat" placeholder="Sản phẩm bán kèm (VD: Túi Xách VÍ ELLY)" style="flex: 2; min-width: 240px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-dark); color: #fff;">
+            <button class="btn btn-primary" onclick="triggerCrossSellUI()" style="background: linear-gradient(135deg, #14b8a6, #0d9488); border: none; padding: 10px 20px;">
+              <i class="fa-solid fa-paper-plane"></i> Chạy Chiến Dịch Cross-Sell
+            </button>
+            <a href="/api/affiliate/export-csv" class="btn btn-secondary" style="background: rgba(20, 184, 166, 0.2); color: #2dd4bf; border-color: rgba(20, 184, 166, 0.4); padding: 10px 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-file-csv"></i> Tải Báo Cáo CSV Doanh Thu
+            </a>
+          </div>
+        </div>
+
+        <!-- Live Feed Nuôi Nick -->
+        <div style="margin-top: 25px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="color: var(--text-sec); font-size: 0.95rem;">
+              <i class="fa-solid fa-terminal" style="color:var(--success); margin-right:6px;"></i>
+              Nhật Ký Nuôi Nick Realtime
+            </h4>
+            <span style="font-size:0.75rem; padding:3px 10px; border-radius:99px; background:rgba(16,185,129,0.15); color:var(--success); border:1px solid rgba(16,185,129,0.3);">
+              <i class="fa-solid fa-circle" style="font-size:0.5rem; animation: pulse 1.5s infinite;"></i> STREAMING
+            </span>
+          </div>
+          <div id="nurture-live-log"
+            style="background: #0a0c0f; padding: 14px; border-radius: 8px; font-size: 0.82rem;
+                   font-family: 'Courier New', monospace; color: #7dd3a8;
+                   max-height: 250px; overflow-y: auto; border: 1px solid rgba(16,185,129,0.2);
+                   line-height: 1.6;">
+            <span style="color:#555;">Bấm nút 'Kích Hoạt Nuôi Nick Ngay' để bắt đầu tiến trình chăm sóc tài khoản...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: HERMES STUDIO ══ -->
+    <section id="tab-hermes-studio" class="tab-content">
+      <div class="glass-card" style="background: rgba(15, 12, 29, 0.7); border: 1px solid rgba(168, 85, 247, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h2 style="margin: 0; color: #c084fc; font-size: 1.4rem; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-desktop"></i> Hermes Studio Control Hub (Multi-Platform Dashboard)
+            </h2>
+            <p style="margin: 4px 0 0 0; color: var(--text-sec); font-size: 0.88rem;">
+              Trung tâm điều hành phiên AI đa nền tảng, trực quan hóa lịch trình ngầm và kiểm soát Token & Doanh thu!
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="loadHermesStudioDashboardUI()" style="background: linear-gradient(135deg, #a855f7, #7e22ce); border: none; padding: 8px 16px;">
+            <i class="fa-solid fa-rotate"></i> Làm Mới Dữ Liệu
+          </button>
+        </div>
+
+        <!-- 3 Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 25px;">
+          
+          <!-- Card 1: Active Sessions -->
+          <div class="bits-tilt-card" style="background: rgba(0,0,0,0.4); padding: 18px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.25);">
+            <h3 style="margin: 0 0 12px 0; font-size: 1rem; color: #60a5fa; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-comments"></i> Phiên Trò Chuyện Đa Nền Tảng (Active Sessions)
+            </h3>
+            <div id="hermes-studio-sessions" style="display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto;">
+              <div class="text-muted" style="font-size:0.85rem;">Đang tải danh sách phiên trò chuyện...</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Scheduled Jobs Visualizer -->
+          <div class="bits-tilt-card" style="background: rgba(0,0,0,0.4); padding: 18px; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.25);">
+            <h3 style="margin: 0 0 12px 0; font-size: 1rem; color: #c084fc; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-calendar-days"></i> Tiến Trình Lên Lịch (Scheduled Jobs Visualizer)
+            </h3>
+            <div id="hermes-studio-jobs" style="display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto;">
+              <div class="text-muted" style="font-size:0.85rem;">Đang tải lịch trình tự động ngầm...</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Usage & Revenue Analytics -->
+          <div class="bits-tilt-card" style="background: rgba(0,0,0,0.4); padding: 18px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.25);">
+            <h3 style="margin: 0 0 12px 0; font-size: 1rem; color: #34d399; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-chart-pie"></i> Usage & Token Metrics (Doanh Thu & Chi Phí)
+            </h3>
+            <div id="hermes-studio-analytics">
+              <div class="text-muted" style="font-size:0.85rem;">Đang tải thống kê chỉ số...</div>
+            </div>
+          </div>
+
+        <!-- Google Workspace CLI Integration Hub -->
+        <div style="margin-top: 20px; background: rgba(66, 133, 244, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(66, 133, 244, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #60a5fa; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-brands fa-google"></i> Google Workspace Integration Hub (Sheets, Gmail, Calendar)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động xuất báo cáo ra Google Sheets, gửi Email kết quả qua Gmail và xuất lịch đăng bài sang Google Calendar!
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="triggerGWSSyncUI()" style="background: linear-gradient(135deg, #4285f4, #1d4ed8); border: none; padding: 10px 20px;">
+              <i class="fa-solid fa-file-excel"></i> Đồng Bộ Google Sheets & Calendar
+            </button>
+            <button class="btn btn-secondary" onclick="triggerGmailDigestUI()" style="background: rgba(234, 67, 53, 0.2); color: #f87171; border-color: rgba(234, 67, 53, 0.4); padding: 10px 20px;">
+              <i class="fa-solid fa-envelope"></i> Gửi Gmail Digest Report
+            </button>
+          </div>
+        </div>
+
+        <!-- World Monitor Global Intelligence Radar -->
+        <div style="margin-top: 20px; background: rgba(234, 179, 8, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(234, 179, 8, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #facc15; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-earth-americas"></i> World Monitor Global Intelligence Radar (OSINT MCP 39+ Tools)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động quét xu hướng tiêu dùng Hot Trends toàn cầu và căn chỉnh kịch bản rải link Affiliate bùng nổ tương tác!
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="triggerWorldMonitorRadarUI()" style="background: linear-gradient(135deg, #eab308, #ca8a04); border: none; padding: 10px 20px; color: #000; font-weight: bold;">
+              <i class="fa-solid fa-radar"></i> Phân Tích Radar Thị Trường Live
+            </button>
+          </div>
+          <div id="worldmonitor-brief-output" style="margin-top: 15px; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; font-size: 0.83rem; display: none;"></div>
+        </div>
+
+        <!-- Mano-P Visual GUI Monitor Card -->
+        <div style="margin-top: 20px; background: rgba(192, 132, 252, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(192, 132, 252, 0.25);">
+          <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #c084fc; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-eye"></i> Mano-P GUI Visual Monitor & Checkpoint Guard (#1 OSINT Benchmark)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Nhận diện giao diện bằng Mắt AI (Vision-Language GUI Agent), hiển thị màn hình live và tự động phát hiện Checkpoint!
+          </p>
+          <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-start;">
+            <div style="flex: 1; min-width: 280px; background: #0a0c0f; padding: 10px; border-radius: 8px; border: 1px solid rgba(192,132,252,0.2); text-align: center;">
+              <img id="mano-live-img" src="/api/mano/screenshot.jpg" style="max-width: 100%; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" alt="Mano-P Live Screenshot Stream">
+              <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;"><i class="fa-solid fa-camera"></i> Live Screenshot Stream Playwright</div>
+            </div>
+            <div style="flex: 1; min-width: 280px;">
+              <button class="btn btn-primary" onclick="refreshManoVisionUI()" style="background: linear-gradient(135deg, #c084fc, #9333ea); border: none; padding: 10px 20px; width: 100%; margin-bottom: 12px;">
+                <i class="fa-solid fa-arrows-rotate"></i> Quét & Cập Nhật Màn Hình Live
+              </button>
+              <div id="mano-vision-details" style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: #e9d5ff;">
+                Đang nạp phân tích thị giác Mano-P...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HAME 15-Account Squad Matrix Card -->
+        <div class="bits-tilt-card" style="margin-top: 20px; background: rgba(59, 130, 246, 0.08); padding: 20px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+            <h3 style="margin: 0; font-size: 1.1rem; color: #60a5fa; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-shield-halved"></i> HAME 15-Account Squad Matrix Hub (Cơ Cấu 3 Đội Ngũ Tác Chiến)
+            </h3>
+            <button class="btn btn-primary" onclick="autoAssignSquadUI()" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); border: none; padding: 6px 14px; font-size: 0.82rem;">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Phân Bổ Tự Động 15 Nick
+            </button>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-sec); margin-bottom: 15px;">
+            Tự động chia và điều phối 15 Nick Facebook thành 3 Đội ngũ: Team Profile Chốt Đơn (3), Team Poster Flash Sale (7), Team Seeding (5).
+          </p>
+          <div id="squad-matrix-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; border: 1px solid rgba(234, 179, 8, 0.3);">
+              <div style="font-weight: bold; color: #facc15; margin-bottom: 6px;">🥇 Team Profile (3 Nick Vệ Tinh)</div>
+              <div id="squad-team-profile" style="font-size: 0.8rem; color: #cbd5e1;">Đang nạp danh sách nick...</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+              <div style="font-weight: bold; color: #60a5fa; margin-bottom: 6px;">🥈 Team Poster (7 Nick Flash Sale)</div>
+              <div id="squad-team-poster" style="font-size: 0.8rem; color: #cbd5e1;">Đang nạp danh sách nick...</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.3);">
+              <div style="font-weight: bold; color: #c084fc; margin-bottom: 6px;">🥉 Team Seeding (5 Nick Tương Tác)</div>
+              <div id="squad-team-seeding" style="font-size: 0.8rem; color: #cbd5e1;">Đang nạp danh sách nick...</div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: INSIGHTS ══ -->
+    <section id="tab-insights" class="tab-content">
+      <div class="card mb">
+        <h3><i class="fa-solid fa-radar"></i> Theo Dõi Khách Hàng Tiềm Năng (Insights)</h3>
+        <p>Nhập Link Nhóm và Từ Khóa Ngách để AI tự động quét bài viết, phân tích Insight và gợi ý Content qua Telegram.</p>
+        <form id="form-insight-target" class="grid-form" onsubmit="handleInsightCreate(event)">
+          <div class="form-group">
+            <label>Tên Gợi Nhớ (Tùy chọn)</label>
+            <input type="text" id="ins-name" placeholder="Ví dụ: Nhóm Bỉm Sữa HN">
+          </div>
+          <div class="form-group">
+            <label>Link Nhóm Cần Quét</label>
+            <input type="url" id="ins-url" placeholder="https://facebook.com/groups/..." required>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Từ Khóa Ngách Sản Phẩm</label>
+            <input type="text" id="ins-keywords" placeholder="Ví dụ: sữa non, tăng cân cho bé, giảm cân sau sinh" required>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1; display:flex; gap:10px;">
+            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> Thêm Mục Tiêu</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card mb">
+        <h3>Danh Sách Mục Tiêu Đang Quét</h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tên / URL Nhóm</th>
+                <th>Ngách</th>
+                <th>Trạng thái</th>
+                <th>Quét lần cuối</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="insight-targets-list"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Lịch Sử Khách Hàng Gần Đây</h3>
+        <p class="text-muted">Các Leads mới được phát hiện và báo cáo về Telegram.</p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tác giả / URL</th>
+                <th>Phân Tích AI (Vấn đề & Gợi ý)</th>
+                <th>Thời gian</th>
+              </tr>
+            </thead>
+            <tbody id="insight-leads-list"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: TEMPLATES ══ -->
+    <section id="tab-templates" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card flex-1">
+          <h2>Lưu mẫu bài viết mới</h2>
+          <form id="template-form" class="standard-form">
+            <div class="form-group">
+              <label>Tên mẫu</label>
+              <input type="text" id="tpl-name" placeholder="VD: Post giới thiệu sản phẩm, Flash sale..." required>
+            </div>
+            <div class="form-group">
+              <label>Thẻ phân loại (tags)</label>
+              <input type="text" id="tpl-tags" placeholder="sale, flash, giới thiệu (cách bởi dấu phẩy)">
+            </div>
+            <div class="form-group">
+              <label>Nội dung mẫu</label>
+              <textarea id="tpl-content" rows="8" placeholder="Nhập nội dung mẫu bài viết..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Lưu mẫu</button>
+          </form>
+        </div>
+        <div class="glass-card flex-2">
+          <h2>Danh sách mẫu đã lưu</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>Tên mẫu</th><th>Tags</th><th>Nội dung</th><th>Ngày tạo</th><th></th></tr></thead>
+              <tbody id="templates-list"><tr><td colspan="5" class="text-center text-muted">Chưa có mẫu nào được lưu.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: ANALYZER ══ -->
+    <section id="tab-analyzer" class="tab-content">
+      <div class="layout-split">
+        <div class="glass-card flex-1">
+          <h2>Phân tích Link Đối thủ & Đề xuất Chiến dịch</h2>
+          <p class="text-muted" style="font-size:.83rem;margin-top:.3rem;">Nhập bất kỳ đường link Facebook (Nhóm, Fanpage, Bài viết, Trang cá nhân) để hệ thống tự động bóc tách các tác nhân (Actors) và đề xuất các hành động tự động hóa phù hợp để phát triển trang của bạn.</p>
+          <form id="analyzer-form" class="standard-form" style="margin-top:1rem;">
+            <div class="form-group">
+              <label>Chọn tài khoản thực hiện</label>
+              <select id="analyzer-account" required><option value="">-- Chọn tài khoản --</option></select>
+            </div>
+            <div class="form-group">
+              <label>Đường link Facebook cần phân tích</label>
+              <input type="url" id="analyzer-url" placeholder="https://www.facebook.com/..." required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" id="btn-analyzer-submit"><i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích link ngay</button>
+          </form>
+        </div>
+
+        <div class="glass-card flex-2" id="analyzer-result-card" style="display:none;">
+          <div class="card-header">
+            <h2>Kết quả phân tích & Đề xuất tác vụ</h2>
+            <span class="badge badge-active" id="analyzer-link-type">Loại link</span>
+          </div>
+          
+          <div class="analyzer-details" style="margin-top: 1rem;">
+            <!-- Phân tích Tác nhân -->
+            <div class="analyzer-section" style="margin-bottom:1.5rem;">
+              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; font-size:1.1rem;"><i class="fa-solid fa-users-gear"></i> Tác nhân chính trên trang (Actors)</h3>
+              <ul id="analyzer-actors-list" style="margin-top: 0.5rem; padding-left: 1.2rem; line-height: 1.6; color: var(--text);">
+              </ul>
+            </div>
+            
+            <hr class="divider" style="margin: 1.5rem 0;">
+
+            <!-- Đề xuất Hành động phát triển -->
+            <div class="analyzer-section">
+              <h3 style="color: var(--accent); display: flex; align-items: center; gap: 0.5rem; font-size:1.1rem;"><i class="fa-solid fa-bolt"></i> Đề xuất Hành động phát triển</h3>
+              <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 0.8rem; margin-top: 0.25rem;">Dưới đây là các hành động tự động hóa được đề xuất để nâng cao khả năng tiếp cận và phát triển tài khoản/trang của bạn dựa trên đối thủ:</p>
+              <div id="analyzer-proposals-container" style="display: flex; flex-direction: column; gap: 1rem; margin-top:1rem;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: SETTINGS ══ -->
+    <section id="tab-settings" class="tab-content">
+      <div class="glass-card max-width-600">
+        <h2>Cấu hình hệ thống</h2>
+        <form id="settings-form" class="standard-form">
+          <div class="form-group">
+            <label>Giãn cách giữa các bài đăng (giây)</label>
+            <input type="number" id="setting-delay" min="10" max="3600" value="60">
+            <small class="form-hint">Tối thiểu 60 giây để tránh spam.</small>
+          </div>
+          <div class="form-group">
+            <label>Chu kỳ quét tương tác bình luận (phút)</label>
+            <input type="number" id="setting-engage-interval" min="5" max="120" value="15">
+            <small class="form-hint">Mỗi bao nhiêu phút hệ thống sẽ tự động quét và phản hồi bình luận.</small>
+          </div>
+          <div class="form-group">
+            <label>Chu kỳ Auto-Like (phút)</label>
+            <input type="number" id="setting-autolike-interval" min="10" max="180" value="30">
+          </div>
+          <div class="form-group">
+            <label>Số lần phản hồi tối đa mỗi lần quét</label>
+            <input type="number" id="setting-max-replies" min="1" max="20" value="5">
+          </div>
+          <div class="form-group">
+            <label>Số lần thả tim tối đa mỗi lần quét</label>
+            <input type="number" id="setting-max-likes" min="1" max="50" value="10">
+          </div>
+          <div class="form-group">
+            <label>AI Engine (Trí tuệ nhân tạo)</label>
+            <select id="setting-ai-engine" onchange="toggleAIEngineInputs()">
+              <option value="gemini">Google Gemini (Mặc định)</option>
+              <option value="claude">Anthropic Claude</option>
+            </select>
+          </div>
+          <div class="form-group" id="gemini-key-wrapper">
+            <label>Gemini API Key</label>
+            <input type="password" id="setting-gemini-key" placeholder="Dán API Key Gemini của bạn tại đây...">
+            <small class="form-hint">Khóa API dùng để kích hoạt trợ lý ảo tự động viết content bán hàng và bóc tách link Shopee.</small>
+          </div>
+          <div class="form-group" id="claude-key-wrapper" style="display:none;">
+            <label>Claude API Key</label>
+            <input type="password" id="setting-claude-key" placeholder="Dán API Key Claude của bạn tại đây...">
+            <small class="form-hint">Khóa API dùng để kích hoạt trợ lý ảo tự động viết content bằng mô hình Claude 3.5.</small>
+          </div>
+          <div class="form-group">
+            <label>Tên miền công khai / Tunnel URL (ngrok/localtunnel)</label>
+            <input type="url" id="setting-public-domain" placeholder="https://your-subdomain.ngrok-free.app hoặc https://xxx.loca.lt">
+            <small class="form-hint">Bắt buộc phải cấu hình nếu sử dụng tính năng "Đăng ảnh tự chọn click ra link" (ánh xạ từ localhost:5000).</small>
+          </div>
+
+          <!-- Auto Shopee Poster Folder Configuration -->
+          <div class="form-group" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; padding-top: 1rem;">
+            <label style="font-weight:bold; color:var(--primary); display:flex; align-items:center; gap:0.5rem; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-folder-open"></i> Đăng Shopee tự động từ thư mục (shopee_links)
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="setting-shopee-poster-account-id">Tài khoản đăng Shopee mặc định</label>
+            <select id="setting-shopee-poster-account-id"></select>
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="setting-shopee-poster-type">Nơi đăng bài Shopee</label>
+              <select id="setting-shopee-poster-type">
+                <option value="profile">Trang cá nhân</option>
+                <option value="group">Nhóm (Group)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label for="setting-shopee-poster-target-id">ID mục tiêu (hoặc "me")</label>
+              <input type="text" id="setting-shopee-poster-target-id" value="me">
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom:1.5rem;">
+            <div class="form-group flex-1">
+              <label for="setting-shopee-poster-format">Định dạng đăng bài</label>
+              <select id="setting-shopee-poster-format">
+                <option value="clickable">Ảnh Clickable (Chuyển hướng)</option>
+                <option value="link">Đăng kèm link trực tiếp (Link thường)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label for="setting-shopee-poster-delay-minutes">Giãn cách đặt lịch (phút)</label>
+              <input type="number" id="setting-shopee-poster-delay-minutes" min="5" value="15">
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom:1.5rem;">
+            <div class="form-group flex-1">
+              <label for="setting-shopee-auto-comment-link">Tự động bình luận link Shopee</label>
+              <select id="setting-shopee-auto-comment-link">
+                <option value="1">Bật (Bình luận link dưới bài đăng)</option>
+                <option value="0">Tắt (Chỉ đăng bài thông thường)</option>
+              </select>
+            </div>
+            <div class="form-group flex-2">
+              <label for="setting-shopee-comment-template">Mẫu bình luận (Dùng {link} làm đại diện)</label>
+              <input type="text" id="setting-shopee-comment-template" value="Link mua sản phẩm tại đây nhé cả nhà: {link}">
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom:1.5rem;">
+            <div class="form-group flex-1">
+              <label for="setting-tele-auto-video">Telegram tự động tạo Video 30s</label>
+              <select id="setting-tele-auto-video">
+                <option value="1">Bật (Tự động biến ảnh Shopee thành Video 30s)</option>
+                <option value="0">Tắt (Chỉ lấy ảnh tĩnh)</option>
+              </select>
+            </div>
+          </div>
+          <!-- Shopee Affiliate Integration -->
+          <div class="form-row" style="margin-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.05); padding-top:1rem;">
+            <div class="form-group flex-1">
+              <label for="setting-shopee-affiliate-id">Mã Shopee Affiliate ID (Chuyển link tiếp thị liên kết)</label>
+              <input type="text" id="setting-shopee-affiliate-id" placeholder="Ví dụ: 123456789">
+              <small class="form-hint">Nếu điền, mọi link Shopee thông thường sẽ được tự động đổi sang link Affiliate.</small>
+            </div>
+            <div class="form-group flex-1">
+              <label for="setting-shopee-sub-id">Mã Sub ID (Tracking)</label>
+              <input type="text" id="setting-shopee-sub-id" value="fbposter">
+              <small class="form-hint">Dùng để theo dõi chiến dịch (mặc định: fbposter).</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="checkbox" id="setting-browser-headless">
+              Chạy ẩn trình duyệt (Headless Mode)
+            </label>
+            <small class="form-hint">Bỏ chọn để hiện cửa sổ trình duyệt và xem trực tiếp quá trình bình luận dạo live.</small>
+          </div>
+          <div class="form-group">
+            <label>Chế độ tốc độ tương tác (Bình luận & Thả tim)</label>
+            <select id="setting-engage-speed">
+              <option value="turbo">Cỗ máy tương tác (Siêu tốc - Nhập nhanh)</option>
+              <option value="safe">Chế độ an toàn (Mô phỏng gõ phím - Chậm)</option>
+            </select>
+            <small class="form-hint">Chọn "Cỗ máy tương tác" để bình luận cực nhanh không độ trễ gõ phím.</small>
+          </div>
+
+          <!-- Auto-Feed Configuration -->
+          <div class="form-group" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; padding-top: 1rem;">
+            <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; font-weight:bold;">
+              <input type="checkbox" id="setting-autofeed-enabled" onchange="toggleAutofeedSettingsDisplay()">
+              Tự động thả tim & bình luận Bảng tin/Nhóm (Auto-Feed)
+            </label>
+          </div>
+          
+          <div id="autofeed-settings-group" style="display:none; margin-left: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label>Nguồn tương tác</label>
+              <select id="setting-autofeed-source">
+                <option value="groups">Nhóm đã tham gia (Groups Feed)</option>
+                <option value="home">Bảng tin chính (News Feed)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Chu kỳ quét bảng tin (phút)</label>
+              <input type="number" id="setting-autofeed-interval" min="5" max="180" value="30">
+            </div>
+
+            <div class="form-group">
+              <label>Số bài viết tương tác tối đa mỗi lần quét</label>
+              <input type="number" id="setting-autofeed-max-posts" min="1" max="20" value="5">
+            </div>
+
+            <div class="form-group">
+              <label>Phương thức bình luận</label>
+              <select id="setting-autofeed-style" onchange="toggleAutofeedSpintaxDisplay()">
+                <option value="AI">Bình luận thông minh bằng Gemini AI</option>
+                <option value="spintax">Mẫu Spintax soạn sẵn</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="autofeed-text-group" style="display:none;">
+              <label>Mẫu nội dung Spintax</label>
+              <textarea id="setting-autofeed-text" rows="3" placeholder="Ví dụ: {Tuyệt vời|Quá hay|Đỉnh quá}! Chúc bạn {buôn may bán đắt|buôn bán thuận lợi}."></textarea>
+              <small class="form-hint">Dùng cú pháp {A|B|C} để chọn ngẫu nhiên các từ cụm từ chống spam.</small>
+            </div>
+          </div>
+          <!-- Telegram Bot Configuration -->
+          <div class="form-group" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; padding-top: 1rem;">
+            <label style="font-weight:bold; color:var(--primary); display:flex; align-items:center; gap:0.5rem; margin-bottom: 0.5rem;">
+              <i class="fa-brands fa-telegram"></i> Tích hợp Telegram Chatbot (HAME System)
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; font-weight:bold;">
+              <input type="checkbox" id="setting-telegram-enabled" onchange="toggleTelegramSettingsDisplay()">
+              Kích hoạt Chatbot Telegram điều khiển
+            </label>
+          </div>
+          
+          <div id="telegram-settings-group" style="display:none; margin-left: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label for="setting-telegram-token">Telegram Bot Token (từ @BotFather)</label>
+              <input type="password" id="setting-telegram-token" placeholder="Ví dụ: 1234567890:ABCdefGhIJKlmNoPQRsTUVwxyZ">
+            </div>
+            
+            <div class="form-group">
+              <label for="setting-telegram-chat-id">Telegram Chat ID</label>
+              <input type="text" id="setting-telegram-chat-id" placeholder="Bỏ trống để tự động liên kết khi bạn gửi tin nhắn đầu tiên /start">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                  <input type="checkbox" id="setting-telegram-notify-success">
+                  Báo cáo khi đăng thành công
+                </label>
+              </div>
+              <div class="form-group flex-1">
+                <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                  <input type="checkbox" id="setting-telegram-notify-fail">
+                  Báo cáo khi đăng thất bại / Lỗi cookie
+                </label>
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-secondary" id="btn-test-telegram" onclick="testTelegramConnection()" style="margin-top:0.5rem; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); padding: 0.5rem 1rem; border-radius: 4px; color: #fff; cursor: pointer; transition: all 0.3s ease;">
+              <i class="fa-solid fa-paper-plane"></i> Gửi tin nhắn thử nghiệm
+            </button>
+          </div>
+
+          <!-- AI Messenger Inbox Bot Configuration -->
+          <div class="form-group" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; padding-top: 1rem;">
+            <label style="font-weight:bold; color:var(--primary); display:flex; align-items:center; gap:0.5rem; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-message"></i> AI Messenger Inbox Bot (Trụ cột HAME)
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; font-weight:bold;">
+              <input type="checkbox" id="setting-inbox-chatbot-enabled" onchange="toggleInboxSettingsDisplay()">
+              Kích hoạt AI tự động nhắn tin Messenger chốt đơn
+            </label>
+          </div>
+          
+          <div id="inbox-settings-group" style="display:none; margin-left: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label for="setting-inbox-keywords">Từ khóa kích hoạt inbox (phân cách bằng dấu phẩy)</label>
+              <input type="text" id="setting-inbox-keywords" placeholder="Ví dụ: ib,gia,inbox,tu van,link,shop,mua">
+              <small class="form-hint">Khi khách hàng bình luận chứa từ khóa này, HAME sẽ gửi Messenger riêng.</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="setting-inbox-comment-reply-template">Mẫu trả lời bình luận công khai (dùng {name} và {link})</label>
+              <textarea id="setting-inbox-comment-reply-template" rows="2" placeholder="Chào {name}, mình đã inbox chi tiết cho bạn rồi nhé. {link}"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="setting-inbox-message-template">Mẫu tin nhắn Messenger riêng gửi khách hàng (dùng {name} và {link})</label>
+              <textarea id="setting-inbox-message-template" rows="3" placeholder="Chào {name}! Đây là thông tin chi tiết và link ưu đãi: {link}"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Lưu cấu hình</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ══ TAB: TRASH ══ -->
+    <section id="tab-trash" class="tab-content">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2>Thùng rác bài viết</h2>
+          <p class="text-muted" style="font-size:.87rem;margin:0;">Các bài viết đã xóa tạm thời sẽ hiển thị ở đây. Bạn có thể khôi phục lại hoặc xóa vĩnh viễn.</p>
+        </div>
+        <div id="bulk-trash-actions-panel" style="display:none; padding: .6rem 1rem; background: var(--bg-hover); border-radius: var(--radius-sm); margin-bottom: 1rem; align-items: center; justify-content: space-between; border: 1px solid var(--border); margin-top: 1rem;">
+          <span id="bulk-trash-selected-count" style="font-weight:600; font-size:.87rem; color:var(--text-muted);">Đã chọn 0 bài viết</span>
+          <div style="display:flex; gap:.5rem;">
+            <button class="btn btn-primary btn-sm" onclick="bulkRestoreTrash()"><i class="fa-solid fa-rotate-left"></i> Khôi phục các mục đã chọn</button>
+            <button class="btn btn-danger btn-sm" onclick="bulkDeletePermanentTrash()"><i class="fa-solid fa-trash-can"></i> Xóa vĩnh viễn các mục đã chọn</button>
+          </div>
+        </div>
+        <div class="table-container" style="margin-top:1rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="select-all-trash" onchange="toggleSelectAllTrash(this)"></th>
+                <th>Tài khoản</th>
+                <th>Nơi đăng</th>
+                <th>Nội dung</th>
+                <th>Thời gian xóa</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="trash-posts-list">
+              <tr><td colspan="6" class="text-center text-muted py-4">Thùng rác trống.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <!-- ══════════════ TAB: WORLD MONITOR RADAR ══════════════ -->
+    <section id="worldmonitor" class="tab-content">
+      <div class="card" style="background: rgba(11, 15, 25, 0.95); border: 1px solid rgba(56, 189, 248, 0.3);">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 12px;">
+          <div>
+            <h2 style="color: #38bdf8; font-size: 1.25rem;"><i class="fa-solid fa-earth-americas"></i> World Monitor Real-Time Intelligence Dashboard</h2>
+            <small style="color: #94a3b8;">Bảng điều khiển Rada Tình báo & Xu hướng Cầu thời gian thực (Vite v6.4.3)</small>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" onclick="triggerWorldMonitorRadarUI()"><i class="fa-solid fa-rotate"></i> Lấy Trend Mới</button>
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('wm-iframe').src='http://localhost:3000'"><i class="fa-solid fa-arrows-rotate"></i> Tải Lại Quả Cầu</button>
+            <a href="http://localhost:3000" target="_blank" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #0284c7, #0369a1); font-weight: bold;"><i class="fa-solid fa-expand"></i> Mở Màn Hình Full 3D (http://localhost:3000)</a>
+          </div>
+        </div>
+        
+        <div id="worldmonitor-brief-output" style="display:none; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 12px; margin-top: 14px;"></div>
+
+        <div style="margin-top: 14px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.3); background: #070a12; position: relative;">
+          <iframe id="wm-iframe" src="http://localhost:3000" style="width: 100%; height: 800px; border: none; background: #070a12;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; webgl; xr-spatial-tracking" allowfullscreen="true" title="World Monitor Radar"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ══ Modal Screenshot ══ -->
+<div id="screenshot-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeScreenshotModal()">&times;</span>
+    <h2>Ảnh chụp màn hình kết quả</h2>
+    <div class="modal-body text-center">
+      <img id="modal-image" src="" alt="Screenshot">
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal Template Use ══ -->
+<div id="template-use-modal" class="modal">
+  <div class="modal-content" style="max-width:600px;">
+    <span class="close-btn" onclick="closeTemplateModal()">&times;</span>
+    <h2>Sử dụng mẫu bài viết</h2>
+    <div class="modal-body">
+      <p class="text-muted" style="font-size:.87rem;margin-bottom:1rem;">Nội dung mẫu sẽ được điền vào form soạn thảo bài viết.</p>
+      <pre id="modal-template-content" style="background:var(--card);padding:1rem;border-radius:var(--radius-sm);border:1px solid var(--border);white-space:pre-wrap;font-family:var(--font);font-size:.88rem;max-height:300px;overflow-y:auto;"></pre>
+      <div class="form-actions" style="margin-top:1rem;">
+        <button class="btn btn-secondary" onclick="closeTemplateModal()">Đóng</button>
+        <button class="btn btn-primary" onclick="applyTemplate()"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dùng mẫu này</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Modal: Sửa bài đăng ══ -->
+<div id="edit-post-modal" class="modal">
+  <div class="modal-content" style="max-width:640px;">
+    <span class="close-btn" onclick="closeEditModal()">&times;</span>
+    <h2><i class="fa-solid fa-pen-to-square" style="color:var(--accent);"></i> Sửa bài đăng</h2>
+    <div class="modal-body">
+      <input type="hidden" id="edit-post-id">
+      <input type="hidden" id="edit-post-original-content">
+      <div class="standard-form">
+
+        <div class="form-group">
+          <label for="edit-post-content">Nội dung bài viết</label>
+          <textarea id="edit-post-content" rows="7" style="width:100%;resize:vertical;" placeholder="Nội dung bài đăng..."></textarea>
+        </div>
+
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group">
+            <label for="edit-post-type">Loại đăng</label>
+            <select id="edit-post-type">
+              <option value="group">Nhóm</option>
+              <option value="profile">Trang cá nhân</option>
+              <option value="page">Fanpage</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-post-scheduled">Ngày giờ đăng</label>
+            <input type="datetime-local" id="edit-post-scheduled">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-post-target">Mục tiêu (Link nhóm / ID / Username)</label>
+          <input type="text" id="edit-post-target" placeholder="https://www.facebook.com/groups/... hoặc ID">
+        </div>
+
+        <div class="form-group">
+          <label for="edit-post-comment">Bình luận tự động sau khi đăng (link Shopee)</label>
+          <input type="text" id="edit-post-comment" placeholder="VD: Link mua sản phẩm tại đây: https://shope.ee/...">
+          <small class="form-hint">Để trống nếu không muốn tự động bình luận.</small>
+        </div>
+
+        <div class="form-group" style="background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);border-radius:var(--radius-sm);padding:.75rem;margin-top:.25rem;">
+          <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;margin:0;">
+            <input type="checkbox" id="edit-apply-similar" style="width:16px;height:16px;accent-color:var(--accent);">
+            <span style="font-size:.88rem;"><b>Áp dụng thay đổi cho tất cả bài đăng có nội dung giống</b><br><small class="text-muted">Hệ thống sẽ tự động cập nhật nội dung cho tất cả bài đang chờ có nội dung trùng với bài này.</small></span>
+          </label>
+        </div>
+
+        <div class="form-actions" style="display:flex;gap:.75rem;margin-top:1rem;">
+          <button class="btn btn-secondary" style="flex:1" onclick="closeEditModal()">Hủy</button>
+          <button id="edit-save-btn" class="btn btn-primary" style="flex:2" onclick="handleSaveEditPost()">
+            <i class="fa-solid fa-floppy-disk"></i> Lưu thay đổi
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1.5"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('active-mobile');
+    });
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && sidebar.classList.contains('active-mobile')) {
+        sidebar.classList.remove('active-mobile');
+      }
+    });
+    const navItems = sidebar.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        sidebar.classList.remove('active-mobile');
+      });
+    });
+  }
+});
+
+// Auto DM Logic
+// ── Load danh sách mục tiêu đã lưu vào Dropdown ──
+async function loadAutoDMTargetLists() {
+  try {
+    const res = await fetch('/api/target-lists');
+    const lists = await res.json();
+    const sel = document.getElementById('autodm-apply-target-list');
+    if (!sel) return;
+    sel.innerHTML = '<option value="">-- Chọn danh sách mục tiêu --</option>';
+    lists.forEach(l => {
+      const opt = document.createElement('option');
+      opt.value = l.id;
+      opt.textContent = `${l.name} (${(l.targets || []).length} nhóm)`;
+      sel.appendChild(opt);
+    });
+  } catch(e) { /* ignore */ }
+}
+loadAutoDMTargetLists();
+
+function applyAutoDMTargetList(listId) {
+  if (!listId) return;
+  fetch('/api/target-lists')
+    .then(r => r.json())
+    .then(lists => {
+      const found = lists.find(l => String(l.id) === String(listId));
+      if (found && found.targets) {
+        document.getElementById('autodm-group-urls').value = found.targets.join('\n');
+        updateAutoDMGroupCount();
+        showToast('success', `Đã nạp ${found.targets.length} nhóm từ "${found.name}"`);
+      }
+    });
+}
+
+function updateAutoDMGroupCount() {
+  const ta = document.getElementById('autodm-group-urls');
+  const countEl = document.getElementById('autodm-group-count');
+  if (!ta || !countEl) return;
+  const lines = ta.value.split('\n').filter(l => l.trim() !== '');
+  countEl.textContent = lines.length > 0 ? `${lines.length} nhóm` : '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ta = document.getElementById('autodm-group-urls');
+  if (ta) ta.addEventListener('input', updateAutoDMGroupCount);
+});
+
+function showAutoDMSaveModal() {
+  const urls = document.getElementById('autodm-group-urls').value;
+  if (!urls.trim()) { showToast('error', 'Vui lòng nhập ít nhất 1 link nhóm trước!'); return; }
+  const name = prompt('Nhập tên cho danh sách mục tiêu này:');
+  if (!name) return;
+  const targets = urls.split('\n').map(l => l.trim()).filter(l => l);
+  fetch('/api/target-lists', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ name, targets })
+  })
+  .then(r => r.json())
+  .then(() => {
+    showToast('success', `Đã lưu danh sách "${name}" (${targets.length} nhóm)!`);
+    loadAutoDMTargetLists();
+  })
+  .catch(() => showToast('error', 'Lỗi khi lưu danh sách.'));
+}
+
+async function startAutoDMCampaign() {
+  const groupUrlsRaw = document.getElementById('autodm-group-urls').value;
+  const productUrl = document.getElementById('autodm-product-url').value;
+  const industry = document.getElementById('autodm-industry').value;
+  const highRisk = document.getElementById('autodm-high-risk').checked;
+
+  const groupUrls = groupUrlsRaw.split('\n').map(l => l.trim()).filter(l => l.includes('facebook.com'));
+
+  if(groupUrls.length === 0) {
+    showToast('error', 'Vui lòng nhập ít nhất 1 đường dẫn Nhóm Facebook hợp lệ!');
+    return;
+  }
+
+  if(!confirm(`Bạn sắp kích hoạt chiến dịch Auto DM cho ${groupUrls.length} nhóm:\n\n${groupUrls.slice(0,3).join('\n')}${groupUrls.length > 3 ? '\n...' : ''}\n\nRobot sẽ lần lượt quét từng nhóm và nhắn tin. Bạn có chắc chắn?`)) return;
+
+  showToast('info', `🤖 Đang khởi động Robot cho ${groupUrls.length} nhóm mục tiêu...`);
+
+  let successCount = 0;
+  for (const groupUrl of groupUrls) {
+    try {
+      const res = await fetch('/api/autodm/run', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ group_url: groupUrl, product_url: productUrl, industry: industry, high_risk: highRisk })
+      });
+      if(res.ok) { successCount++; }
+    } catch (err) {
+      console.error('Lỗi khi gửi nhóm:', groupUrl, err);
+    }
+  }
+  showToast('success', `🚀 Đã kích hoạt ${successCount}/${groupUrls.length} chiến dịch Auto DM thành công!`);
+}
+
+async function startAutoDMFollowup() {
+  if(!confirm('Bạn có chắc muốn khởi chạy chiến dịch Chăm sóc lại (Follow-up) cho các khách hàng đã gửi DM trước đó?')) return;
+  showToast('info', '🤖 Đang khởi động Robot Chăm sóc lại (Follow-up)...');
+  try {
+    const res = await fetch('/api/autodm/followup', { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', '🔄 ' + data.message);
+    } else {
+      showToast('error', data.error || 'Lỗi khi bật follow-up');
+    }
+  } catch(e) {
+    showToast('error', 'Không thể kết nối tới server.');
+  }
+}
+
+async function handleQuickAddNurtureAccount(e) {
+  e.preventDefault();
+  const name = document.getElementById('qn-name').value.trim();
+  const cookie = document.getElementById('qn-cookie').value.trim();
+  const proxy = document.getElementById('qn-proxy').value.trim();
+  if (!name || !cookie) {
+    showToast('error', 'Vui lòng nhập tên nick và Cookie Facebook!');
+    return;
+  }
+  showToast('info', '⏳ Đang lưu tài khoản và kích hoạt nuôi nick...');
+  try {
+    const res = await fetch('/api/accounts', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ name, cookie, proxy, platform: 'facebook', status: 'active' })
+    });
+    const newAcc = await res.json();
+    if (res.ok) {
+      showToast('success', `🎉 Đã thêm tài khoản "${name}" thành công!`);
+      document.getElementById('quick-nurture-account-form').reset();
+      await loadNurtureAccounts();
+      if (newAcc && newAcc.id) {
+        startNurtureCampaign(newAcc.id);
+      }
+    } else {
+      showToast('error', newAcc.error || 'Lỗi thêm tài khoản');
+    }
+  } catch(err) {
+    showToast('error', 'Không thể kết nối tới server.');
+  }
+}
+
+async function loadNurtureAccounts() {
+  const container = document.getElementById('nurture-accounts-grid');
+  if(!container) return;
+  try {
+    const res = await fetch('/api/accounts');
+    const accounts = await res.json();
+    const fbAccounts = accounts.filter(a => a.platform === 'facebook' || !a.platform);
+    if(fbAccounts.length === 0) {
+      container.innerHTML = '<div class="text-muted py-3">Chưa có tài khoản Facebook nào trong hệ thống. Hãy thêm tài khoản ở form trên!</div>';
+      return;
+    }
+    container.innerHTML = fbAccounts.map(acc => {
+      const trust = acc.trust_score || 95;
+      const likes = acc.nurture_likes || 0;
+      const reels = acc.nurture_reels || 0;
+      const comments = acc.nurture_comments || 0;
+      const lastRun = acc.last_nurtured_at ? acc.last_nurtured_at : 'Chưa nuôi lần nào';
+      const proxyTag = acc.proxy ? `<div style="font-size: 0.72rem; color: #a78bfa; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><i class="fa-solid fa-shield-halved"></i> ${acc.proxy}</div>` : '';
+
+      return `
+        <div class="card" style="padding: 14px; background: rgba(24, 27, 33, 0.75); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex: 1; overflow: hidden;">
+              <input type="checkbox" class="nurture-acc-checkbox" value="${acc.id}" checked style="width: 18px; height: 18px; cursor: pointer;">
+              <div style="font-weight: 600; font-size: 0.95rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${acc.name}</div>
+            </div>
+            <span style="font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3);">
+              💚 ${trust}% Trust
+            </span>
+          </div>
+
+          ${proxyTag}
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; background: rgba(0,0,0,0.25); padding: 8px; border-radius: 6px; text-align: center; font-size: 0.78rem;">
+            <div>
+              <div style="color: #ff4d4d; font-weight: bold;">❤️ ${likes}</div>
+              <div style="color: var(--text-sec); font-size: 0.7rem;">Thả tim</div>
+            </div>
+            <div>
+              <div style="color: #3b82f6; font-weight: bold;">📺 ${reels}</div>
+              <div style="color: var(--text-sec); font-size: 0.7rem;">Xem Reels</div>
+            </div>
+            <div>
+              <div style="color: #10b981; font-weight: bold;">💬 ${comments}</div>
+              <div style="color: var(--text-sec); font-size: 0.7rem;">Bình luận</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-sec); margin-top: 4px;">
+            <span><i class="fa-regular fa-clock"></i> ${lastRun}</span>
+            <button class="btn btn-secondary btn-xs" onclick="startNurtureCampaign('${acc.id}')" title="Nuôi riêng nick này" style="background: rgba(16,185,129,0.2); color: #10b981; border-color: rgba(16,185,129,0.3);">
+              <i class="fa-solid fa-play"></i> Nuôi ngay
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch(e) {
+    container.innerHTML = '<div class="text-danger">Không thể tải danh sách tài khoản & chỉ số.</div>';
+  }
+}
+
+function toggleSelectAllNurtureAccounts(selectAll) {
+  const checkboxes = document.querySelectorAll('.nurture-acc-checkbox');
+  checkboxes.forEach(cb => cb.checked = selectAll);
+}
+
+async function startTargetFriendExtractor() {
+  const url = document.getElementById('target-friend-url').value.strip ? document.getElementById('target-friend-url').value.strip() : document.getElementById('target-friend-url').value.trim();
+  const limit = document.getElementById('target-friend-limit').value || 25;
+  if (!url) {
+    showToast('error', 'Vui lòng nhập Link trang cá nhân của đối thủ!');
+    return;
+  }
+  if (!confirm(`Bạn có chắc muốn bóc tách bạn bè từ đối thủ và gửi lời mời kết bạn?`)) return;
+  showToast('info', '🎯 Đang khởi động Robot bóc tách bạn bè đối thủ...');
+  try {
+    const res = await fetch('/api/friends/target-add', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ target_url: url, limit: parseInt(limit) })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', '🎯 ' + data.message);
+    } else {
+      showToast('error', data.error || 'Lỗi bóc tách bạn bè');
+    }
+  } catch(e) {
+    showToast('error', 'Không thể kết nối tới server.');
+  }
+}
+
+async function startAIVideoStudio() {
+  const title = document.getElementById('video-prod-title').value.trim();
+  const price = document.getElementById('video-prod-price').value || 500000;
+  const destination = document.getElementById('video-destination').value || 'all';
+
+  if(!title) {
+    showToast('error', 'Vui lòng nhập Tên sản phẩm để tạo video!');
+    return;
+  }
+  showToast('info', `🎬 AI đang quay Video sản phẩm và chuẩn bị đăng tới: ${destination.toUpperCase()}...`);
+  try {
+    const res = await fetch('/api/video/create', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ title, price: parseInt(price), destination })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', data.message);
+    } else {
+      showToast('error', data.error || 'Lỗi tạo video AI');
+    }
+  } catch(e) {
+    showToast('error', 'Không thể kết nối tới server.');
+  }
+}
+
+async function loadAffiliateStatsUI() {
+  try {
+    const res = await fetch('/api/affiliate/revenue-stats');
+    const data = await res.json();
+    if(res.ok) {
+      if(document.getElementById('aff-total-links')) document.getElementById('aff-total-links').innerText = data.total_links || 0;
+      if(document.getElementById('aff-total-clicks')) document.getElementById('aff-total-clicks').innerText = data.total_clicks || 0;
+      if(document.getElementById('aff-total-commission')) document.getElementById('aff-total-commission').innerText = (data.total_commission || 0).toLocaleString('vi-VN') + ' VNĐ';
+    }
+  } catch(e) {}
+}
+
+async function convertAffiliateLinkUI() {
+  const url = document.getElementById('aff-raw-url').value.trim();
+  if(!url) {
+    showToast('error', 'Vui lòng dán URL sản phẩm Shopee/Lazada!');
+    return;
+  }
+  try {
+    const res = await fetch('/api/affiliate/convert', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', '🔗 Tạo Link Affiliate thành công!');
+      document.getElementById('aff-raw-url').value = data.affiliate_url;
+      loadAffiliateStatsUI();
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi chuyển đổi link.');
+  }
+}
+
+async function triggerFlashSaleScraperUI() {
+  showToast('info', '💰 Đang kích hoạt Robot Săn Deal Flash Sale & rải bài Affiliate...');
+  try {
+    const res = await fetch('/api/affiliate/flashsale', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ category: 'Bán Chạy Nhất' })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', data.message);
+      setTimeout(loadAffiliateStatsUI, 3000);
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi săn deal Flash Sale.');
+  }
+}
+
+async function loadHermesMemoriesUI() {
+  const container = document.getElementById('hermes-memory-list');
+  if(!container) return;
+  try {
+    const res = await fetch('/api/hermes/memories');
+    const memories = await res.json();
+    if(memories.length === 0) {
+      container.innerHTML = '<div class="text-muted" style="font-size: 0.85rem;">Chưa có dữ liệu Trí nhớ dài hạn. AI sẽ tự động ghi nhớ sau khi nhắn tin tư vấn với khách hàng!</div>';
+      return;
+    }
+    container.innerHTML = memories.map(m => `
+      <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); font-size: 0.82rem;">
+        <div style="font-weight: bold; color: #60a5fa; margin-bottom: 4px;"><i class="fa-solid fa-user-gear"></i> ${m.name || m.customer_id}</div>
+        <div style="color: var(--text-sec);">🎯 Sở thích: ${m.preference || 'Tư vấn chung'}</div>
+        <div style="color: var(--text-sec);">📝 Ghi chú: ${m.notes || 'Thích ưu đãi'}</div>
+        <div style="color: #94a3b8; font-size: 0.72rem; margin-top: 4px;"><i class="fa-regular fa-clock"></i> ${m.last_interacted_at}</div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+let voiceRecognition = null;
+let isVoiceRecording = false;
+
+function toggleVoiceInput(targetInputId = null) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    showToast('error', 'Trình duyệt không hỗ trợ Nhận dạng Giọng nói Web Speech API (Vui lòng dùng Google Chrome hoặc Microsoft Edge).');
+    return;
+  }
+
+  const micBtn = document.getElementById('global-voice-mic-btn');
+
+  if (isVoiceRecording) {
+    if (voiceRecognition) voiceRecognition.stop();
+    isVoiceRecording = false;
+    if (micBtn) {
+      micBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      micBtn.innerHTML = '<i class="fa-solid fa-microphone"></i> Giọng Nói (Tắt)';
+    }
+    showToast('info', 'Đã dừng lắng nghe giọng nói.');
+    return;
+  }
+
+  voiceRecognition = new SpeechRecognition();
+  voiceRecognition.lang = 'vi-VN';
+  voiceRecognition.continuous = true;
+  voiceRecognition.interimResults = true;
+
+  voiceRecognition.onstart = () => {
+    isVoiceRecording = true;
+    if (micBtn) {
+      micBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+      micBtn.innerHTML = '<i class="fa-solid fa-microphone-lines fa-beat"></i> Đang Lắng Nghe...';
+    }
+    showToast('success', '🎙️ AI đang lắng nghe giọng nói tiếng Việt... Hãy nói nội dung cần nhập!');
+  };
+
+  voiceRecognition.onresult = (event) => {
+    let transcript = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript;
+    }
+    
+    // Auto fill focused or default input
+    const activeEl = document.activeElement;
+    let targetInput = targetInputId ? document.getElementById(targetInputId) : null;
+    if (!targetInput && activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
+      targetInput = activeEl;
+    }
+    if (!targetInput) {
+      targetInput = document.getElementById('video-prod-title') || document.getElementById('aff-raw-url') || document.getElementById('post-content');
+    }
+    if (targetInput) {
+      targetInput.value = transcript;
+    }
+  };
+
+  voiceRecognition.onerror = (event) => {
+    showToast('error', 'Lỗi giọng nói: ' + event.error);
+    isVoiceRecording = false;
+    if (micBtn) {
+      micBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      micBtn.innerHTML = '<i class="fa-solid fa-microphone"></i> Giọng Nói (Tắt)';
+    }
+  };
+
+  voiceRecognition.onend = () => {
+    isVoiceRecording = false;
+    if (micBtn) {
+      micBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      micBtn.innerHTML = '<i class="fa-solid fa-microphone"></i> Giọng Nói (Tắt)';
+    }
+  };
+
+  voiceRecognition.start();
+}
+
+let deferredPWAInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPWAInstallPrompt = e;
+  const pwaBtn = document.getElementById('install-pwa-btn');
+  if(pwaBtn) pwaBtn.style.display = 'inline-flex';
+});
+
+function promptInstallDesktopPWA() {
+  if (deferredPWAInstallPrompt) {
+    deferredPWAInstallPrompt.prompt();
+    deferredPWAInstallPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        showToast('success', '🖥️ Đã cài đặt Ứng dụng Desktop FBPoster Enterprise!');
+      }
+      deferredPWAInstallPrompt = null;
+    });
+  } else {
+    showToast('info', '💡 Bạn có thể bấm biểu tượng Cài Đặt (Install) trên thanh địa chỉ trình duyệt để cài làm Desktop App!');
+  }
+}
+
+async function loadGBrainGraphUI() {
+  const container = document.getElementById('gbrain-graph-list');
+  if(!container) return;
+  try {
+    const res = await fetch('/api/gbrain/graph');
+    const edges = await res.json();
+    if(edges.length === 0) {
+      container.innerHTML = '<div class="text-muted" style="font-size: 0.85rem;">Chưa có nút đồ thị tri thức. GBrain Signal Detector sẽ tự động bóc tách khi có tin nhắn mới!</div>';
+      return;
+    }
+    container.innerHTML = edges.map(e => `
+      <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(168,85,247,0.2); font-size: 0.82rem;">
+        <div style="font-weight: bold; color: #c084fc; margin-bottom: 4px;"><i class="fa-solid fa-link"></i> ${e.source_id}</div>
+        <div style="color: #e9d5ff; font-weight: 500;">➔ ${e.relation_type.toUpperCase()} ➔ ${e.target_id}</div>
+        <div style="color: #94a3b8; font-size: 0.72rem; margin-top: 4px;"><i class="fa-regular fa-clock"></i> ${e.created_at}</div>
+      </div>
+    `).join('');
+  } catch(err) {}
+}
+
+async function triggerCrossSellUI() {
+  const category = document.getElementById('cross-sell-cat').value.trim() || 'Túi Xách VÍ ELLY';
+  showToast('info', `🎯 Đang kích hoạt Robot AI Cross-Sell bán chéo sản phẩm '${category}'...`);
+  try {
+    const res = await fetch('/api/affiliate/cross-sell', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ category })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', data.message);
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi khởi chạy Cross-Sell.');
+  }
+}
+
+async function loadHermesStudioDashboardUI() {
+  try {
+    const res = await fetch('/api/hermes-studio/dashboard');
+    const data = await res.json();
+    
+    // Sessions
+    const sessContainer = document.getElementById('hermes-studio-sessions');
+    if(sessContainer && data.sessions) {
+      sessContainer.innerHTML = data.sessions.map(s => `
+        <div style="background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 8px; border-left: 4px solid ${s.color}; font-size: 0.83rem;">
+          <div style="font-weight: bold; color: ${s.color}; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="${s.icon}"></i> ${s.name}</span>
+            <span style="font-size: 0.7rem; color: #94a3b8;">${s.platform}</span>
+          </div>
+          <div style="color: #cbd5e1; margin-top: 4px;">${s.detail}</div>
+          <div style="color: #64748b; font-size: 0.72rem; margin-top: 2px;"><i class="fa-regular fa-clock"></i> Active: ${s.last_active}</div>
+        </div>
+      `).join('');
+    }
+
+    // Scheduled Jobs
+    const jobsContainer = document.getElementById('hermes-studio-jobs');
+    if(jobsContainer && data.scheduled_jobs) {
+      jobsContainer.innerHTML = data.scheduled_jobs.map(j => `
+        <div style="background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.83rem;">
+          <div style="font-weight: bold; color: ${j.color}; display: flex; justify-content: space-between;">
+            <span><i class="${j.icon}"></i> ${j.title}</span>
+            <span style="font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: rgba(168,85,247,0.2); color: #c084fc;">${j.status}</span>
+          </div>
+          <div style="color: #94a3b8; font-size: 0.75rem; margin-top: 3px;">📅 ${j.schedule}</div>
+          <div style="color: #cbd5e1; font-size: 0.78rem; margin-top: 3px;">${j.description}</div>
+        </div>
+      `).join('');
+    }
+
+    // Analytics
+    const anaContainer = document.getElementById('hermes-studio-analytics');
+    if(anaContainer && data.analytics) {
+      const a = data.analytics;
+      anaContainer.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.83rem;">
+          <div style="background: rgba(16,185,129,0.1); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(16,185,129,0.2);">
+            <div style="font-size: 1.2rem; font-weight: bold; color: #34d399;">${a.total_commission.toLocaleString()} VNĐ</div>
+            <div style="color: #94a3b8; font-size: 0.75rem; margin-top: 2px;">💰 Hoa Hồng Affiliate</div>
+          </div>
+          <div style="background: rgba(59,130,246,0.1); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(59,130,246,0.2);">
+            <div style="font-size: 1.2rem; font-weight: bold; color: #60a5fa;">${a.total_clicks} Clicks</div>
+            <div style="color: #94a3b8; font-size: 0.75rem; margin-top: 2px;">👆 Lượt Click Mua Hàng</div>
+          </div>
+          <div style="background: rgba(168,85,247,0.1); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(168,85,247,0.2);">
+            <div style="font-size: 1.2rem; font-weight: bold; color: #c084fc;">${a.estimated_tokens_used.toLocaleString()} Tokens</div>
+            <div style="color: #94a3b8; font-size: 0.75rem; margin-top: 2px;">🧠 AI Token Tiêu Thụ</div>
+          </div>
+          <div style="background: rgba(234,179,8,0.1); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(234,179,8,0.2);">
+            <div style="font-size: 1.2rem; font-weight: bold; color: #facc15;">${a.api_calls_count} Lượt</div>
+            <div style="color: #94a3b8; font-size: 0.75rem; margin-top: 2px;">🤖 API Call Gemini</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 6px; font-size: 0.75rem; color: #34d399; text-align: center;">
+          <i class="fa-solid fa-heart-pulse"></i> Trạng thái cỗ máy: <b>${a.system_health}</b>
+        </div>
+      `;
+    }
+
+  } catch(e) {}
+}
+
+async function triggerGWSSyncUI() {
+  showToast('info', '📊 Đang xuất & đồng bộ dữ liệu báo cáo sang Google Sheets & Google Calendar...');
+  try {
+    const res = await fetch('/api/gws/sync-sheets', { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) showToast('success', data.message);
+  } catch(e) {
+    showToast('error', 'Lỗi đồng bộ Google Workspace.');
+  }
+}
+
+async function triggerGmailDigestUI() {
+  showToast('info', '📧 Đang khởi tạo & gửi Email báo cáo doanh thu qua Gmail...');
+  try {
+    const res = await fetch('/api/gws/send-digest', { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) showToast('success', data.message);
+  } catch(e) {
+    showToast('error', 'Lỗi gửi Gmail Digest.');
+  }
+}
+
+async function triggerWorldMonitorRadarUI() {
+  const out = document.getElementById('worldmonitor-brief-output');
+  showToast('info', '🌍 Đang phân tích Tình báo thị trường World Monitor...');
+  try {
+    const res = await fetch('/api/worldmonitor/trends');
+    const data = await res.json();
+    if(out && data.trends) {
+      out.style.display = 'block';
+      const trendsList = data.trends.slice(0, 5).map((t, idx) => `
+        <div style="font-size: 0.85rem; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+          <span style="color: #38bdf8; font-weight: bold;">${idx+1}. [${t.source}]</span> ${t.title}
+        </div>
+      `).join('');
+      out.innerHTML = `
+        <div style="color: #facc15; font-weight: bold; margin-bottom: 6px;"><i class="fa-solid fa-bolt"></i> Real-Time Google & News Trends (World Monitor):</div>
+        ${trendsList}
+        <div style="color: #94a3b8; font-size: 0.72rem; margin-top: 6px;">💡 AI HAME tự động lấy trend này làm Hook để rải bài bán hàng Shopee!</div>
+      `;
+      showToast('success', '🌍 Đã cập nhật 15 Tình báo trend thị trường World Monitor!');
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi truy vấn World Monitor.');
+  }
+}
+
+async function refreshManoVisionUI() {
+  const img = document.getElementById('mano-live-img');
+  const details = document.getElementById('mano-vision-details');
+  if(img) img.src = '/api/mano/screenshot.jpg?t=' + new Date().getTime();
+  
+  showToast('info', '👁️ Mano-P đang phân tích hình ảnh giao diện màn hình live...');
+  try {
+    const res = await fetch('/api/mano/capture');
+    const data = await res.json();
+    if(details && data.checkpoint_guard) {
+      const chk = data.checkpoint_guard;
+      details.innerHTML = `
+        <div>🤖 <b>Agent:</b> ${data.agent} (${data.benchmark})</div>
+        <div style="margin-top: 4px;">🛡️ <b>Checkpoint Guard:</b> <span style="color: #34d399;">${chk.details}</span></div>
+        <div style="margin-top: 4px;">🔍 <b>Phần tử UI nhận diện:</b> ${data.elements_detected.join(', ')}</div>
+        <div style="color: #94a3b8; font-size: 0.72rem; margin-top: 6px;">Thời gian quét: ${data.analyzed_at}</div>
+      `;
+      showToast('success', '👁️ Đã cập nhật ảnh màn hình & phân tích thị giác Mano-P!');
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi phân tích thị giác Mano-P.');
+  }
+}
+
+async function loadSquadMatrixUI() {
+  try {
+    const res = await fetch('/api/squad/matrix');
+    const data = await res.json();
+    if(data.teams) {
+      const pEl = document.getElementById('squad-team-profile');
+      const postEl = document.getElementById('squad-team-poster');
+      const seedEl = document.getElementById('squad-team-seeding');
+      
+      const renderTeam = (accs) => accs.map(a => `<div>• <b>${a.name}</b> (Trust: ${a.trust_score || 80})</div>`).join('') || '<div class="text-muted" style="font-size:0.75rem;">Chưa phân bổ</div>';
+      
+      if(pEl) pEl.innerHTML = renderTeam(data.teams.team_profile.accounts);
+      if(postEl) postEl.innerHTML = renderTeam(data.teams.team_poster.accounts);
+      if(seedEl) seedEl.innerHTML = renderTeam(data.teams.team_seeding.accounts);
+    }
+  } catch(e) {
+    console.log('Squad Matrix load error:', e);
+  }
+}
+
+async function autoAssignSquadUI() {
+  showToast('info', '🛡️ Đang tự động phân bổ 15 Nick vào 3 Đội Ngũ Tác Chiến...');
+  try {
+    const res = await fetch('/api/squad/assign', { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', data.message);
+      loadSquadMatrixUI();
+    }
+  } catch(e) {
+    showToast('error', 'Lỗi phân bổ đội ngũ.');
+  }
+}
+
+async function launchSingleBrowserUI(accId) {
+  showToast('info', '🌐 Đang mở cửa sổ trình duyệt Chrome nạp sẵn Cookie...');
+  try {
+    const res = await fetch(`/api/browser/launch/${accId}`, { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) showToast('success', data.message);
+  } catch(e) {
+    showToast('error', 'Lỗi mở trình duyệt.');
+  }
+}
+
+async function launchAllBrowsersUI(teamRole = '') {
+  showToast('info', '🚀 Đang kích hoạt đồng loạt cửa sổ trình duyệt cho 15 Nick...');
+  try {
+    const url = teamRole ? `/api/browser/launch-all?team_role=${teamRole}` : '/api/browser/launch-all';
+    const res = await fetch(url, { method: 'POST' });
+    const data = await res.json();
+    if(res.ok) showToast('success', data.message);
+  } catch(e) {
+    showToast('error', 'Lỗi mở đồng loạt trình duyệt.');
+  }
+}
+
+// Auto load affiliate stats, Hermes memories, GBrain Graph, Hermes Studio & register SW on init
+document.addEventListener('DOMContentLoaded', () => {
+  loadAffiliateStatsUI();
+  loadHermesMemoriesUI();
+  loadGBrainGraphUI();
+  loadHermesStudioDashboardUI();
+  loadSquadMatrixUI();
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(err => console.log('SW reg error:', err));
+  }
+});
+
+async function startNurtureCampaign(singleAccountId = null) {
+  let targetIds = [];
+  if (singleAccountId) {
+    targetIds = [singleAccountId];
+  } else {
+    const checked = document.querySelectorAll('.nurture-acc-checkbox:checked');
+    targetIds = Array.from(checked).map(c => c.value);
+    if(targetIds.length === 0) {
+      showToast('error', 'Vui lòng chọn ít nhất 1 tài khoản Facebook để nuôi!');
+      return;
+    }
+  }
+
+  if(!confirm(`Bạn có chắc muốn kích hoạt phiên Nuôi Nick cho ${targetIds.length} tài khoản Facebook?`)) return;
+  showToast('info', `🌱 Đang khởi động Robot Nuôi Nick cho ${targetIds.length} tài khoản...`);
+  try {
+    const res = await fetch('/api/nurture/run', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ account_ids: targetIds })
+    });
+    const data = await res.json();
+    if(res.ok) {
+      showToast('success', '🌱 ' + data.message);
+      initNurtureSSE();
+    } else {
+      showToast('error', data.error || 'Lỗi khởi chạy nuôi nick');
+    }
+  } catch(e) {
+    showToast('error', 'Không thể kết nối tới server.');
+  }
+}
+
+function initNurtureSSE() {
+  const logContainer = document.getElementById('nurture-live-log');
+  if(!logContainer) return;
+  const evtSource = new EventSource('/api/nurture/stream');
+  evtSource.onmessage = function(event) {
+    const div = document.createElement('div');
+    div.textContent = event.data;
+    logContainer.appendChild(div);
+    logContainer.scrollTop = logContainer.scrollHeight;
+  };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNurtureSSE();
+  loadNurtureAccounts();
+});
+
+// Auto DM Analytics Fetch
+let abChart = null;
+async function fetchAutoDMStats() {
+  try {
+    const res = await fetch('/api/autodm/stats');
+    const data = await res.json();
+    
+    document.getElementById('stat-var-a').textContent = data.variant_a_success;
+    document.getElementById('stat-var-b').textContent = data.variant_b_success;
+    document.getElementById('stat-failed').textContent = data.failed;
+    
+    const totalSuccess = data.variant_a_success + data.variant_b_success;
+    const totalSent = totalSuccess + data.failed;
+    const rate = totalSent > 0 ? Math.round((totalSuccess / totalSent) * 100) : 0;
+    const rateEl = document.getElementById('stat-rate');
+    if (rateEl) rateEl.textContent = rate + '%';
+    
+    const logsEl = document.getElementById('autodm-recent-logs');
+    if(data.recent_logs && data.recent_logs.length > 0) {
+      logsEl.textContent = data.recent_logs.join('\n');
+    } else {
+      logsEl.textContent = "Chưa có dữ liệu...";
+    }
+    
+    // Render Chart
+    const ctx = document.getElementById('abTestChart').getContext('2d');
+    if(abChart) {
+      abChart.data.datasets[0].data = [data.variant_a_success, data.variant_b_success, data.failed];
+      abChart.update();
+    } else {
+      abChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Variant A (Thành công)', 'Variant B (Thành công)', 'Thất bại'],
+          datasets: [{
+            data: [data.variant_a_success, data.variant_b_success, data.failed],
+            backgroundColor: [
+              '#3b82f6', // primary
+              '#8b5cf6', // accent
+              '#ef4444'  // danger
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Lỗi khi tải số liệu Analytics:", err);
+  }
+}
+
+// Gọi lần đầu khi trang load và auto refresh mỗi 10s
+fetchAutoDMStats();
+setInterval(fetchAutoDMStats, 10000);
+
+// ══ LIVE LOG STREAM (Server-Sent Events) ══
+function startLiveLogStream() {
+  const logBox = document.getElementById('autodm-live-log');
+  if (!logBox) return;
+
+  const es = new EventSource('/api/autodm/stream');
+
+  es.onmessage = function(event) {
+    const line = event.data;
+    if (!line) return;
+
+    // Màu sắc theo loại log
+    let color = '#7dd3a8'; // mặc định xanh lá
+    if (line.includes('SUCCESS')) color = '#10b981';
+    else if (line.includes('FAILED') || line.includes('ERROR')) color = '#ef4444';
+    else if (line.includes('SENT')) color = '#3b82f6';
+    else if (line.includes('⏳')) color = '#f59e0b';
+
+    // Xóa placeholder nếu có
+    const placeholder = logBox.querySelector('span[style*="color:#555"]');
+    if (placeholder) placeholder.remove();
+
+    const div = document.createElement('div');
+    div.style.color = color;
+    div.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+    div.style.paddingBottom = '2px';
+    div.style.marginBottom = '2px';
+    div.textContent = line;
+    logBox.appendChild(div);
+
+    // Auto-scroll xuống dưới cùng
+    logBox.scrollTop = logBox.scrollHeight;
+
+    // Cập nhật luôn chart khi có log mới
+    fetchAutoDMStats();
+  };
+
+  es.onerror = function() {
+    // Kết nối bị đứt, thử lại sau 5s
+    es.close();
+    setTimeout(startLiveLogStream, 5000);
+  };
+}
+
+startLiveLogStream();
+
+</script>
+</body>
+</html>

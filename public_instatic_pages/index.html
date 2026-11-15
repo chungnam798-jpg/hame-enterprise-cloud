@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mỹ Phẩm & Skincare VIP - LOLISHOP OFFICIAL STORE | Nguyễn Hồng Nhung</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background: #070913; color: #f8fafc; padding-bottom: 60px; line-height: 1.5; overflow-x: hidden; }
+        
+        /* Sticky Top Countdown Header */
+        .top-timer-bar { background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6); color: #fff; text-align: center; padding: 10px 15px; font-weight: 800; font-size: 0.95rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4); display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .pulse-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #22c55e; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.8; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.8; } }
+        
+        .container { max-width: 1240px; margin: 30px auto; padding: 0 16px; }
+        
+        /* Hero Section */
+        .hero-section { background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), rgba(7, 9, 19, 0.9)), #0f172a; border-radius: 24px; padding: 40px 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; overflow: hidden; }
+        .hero-badge { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.85rem; display: inline-block; margin-bottom: 16px; letter-spacing: 1px; }
+        .hero-title { font-size: 2.4rem; font-weight: 900; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1.2; }
+        .hero-subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 24px auto; }
+        .seller-chip { display: inline-flex; align-items: center; gap: 12px; background: rgba(30, 41, 59, 0.8); padding: 8px 20px; border-radius: 40px; border: 1px solid #334155; }
+        .seller-chip strong { color: #38bdf8; }
+        
+        /* Category Filter Pills */
+        .filter-nav { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+        .filter-btn { background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 12px 24px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
+        .filter-btn.active, .filter-btn:hover { background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border-color: #38bdf8; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4); transform: translateY(-2px); }
+        
+        /* Product Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .product-card { background: #131b2e; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .product-card:hover { transform: translateY(-6px); border-color: #38bdf8; box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15); }
+        
+        .badge-row { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; z-index: 10; }
+        .discount-badge { background: #ef4444; color: #fff; font-weight: 900; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); }
+        .mall-badge { background: #d97706; color: #fff; font-weight: 800; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; }
+        
+        .prod-img { background: #0b0f19; height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; }
+        .img-placeholder { color: #38bdf8; font-weight: 800; font-size: 0.95rem; text-align: center; border: 1px dashed rgba(56, 189, 248, 0.3); padding: 15px 20px; border-radius: 12px; }
+        
+        .prod-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .prod-title { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 10px; line-height: 1.4; height: 44px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .prod-stats { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 14px; color: #94a3b8; }
+        .stars { color: #f59e0b; font-weight: 700; }
+        
+        .price-box { margin-bottom: 16px; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 12px; display: flex; align-items: baseline; justify-content: space-between; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .sale-price { font-size: 1.3rem; font-weight: 900; color: #22c55e; }
+        .orig-price { text-decoration: line-through; color: #64748b; font-size: 0.85rem; }
+        
+        .action-btns { display: flex; flex-direction: column; gap: 8px; }
+        .btn-buy { display: block; text-align: center; background: linear-gradient(135deg, #f97316, #ef4444); color: #fff; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 0.9rem; transition: all 0.2s; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); }
+        .btn-buy:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .btn-chat { display: block; text-align: center; background: rgba(30, 41, 59, 0.8); color: #38bdf8; text-decoration: none; padding: 8px; border-radius: 10px; font-weight: 700; font-size: 0.8rem; border: 1px solid rgba(56, 189, 248, 0.3); transition: all 0.2s; }
+        .btn-chat:hover { background: rgba(56, 189, 248, 0.15); }
+        
+        /* Floating Chat Widget */
+        .floating-chat { position: fixed; bottom: 25px; right: 25px; background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; padding: 14px 22px; border-radius: 40px; text-decoration: none; font-weight: 800; font-size: 0.95rem; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s; }
+        .floating-chat:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Top Bar -->
+    <div class="top-timer-bar">
+        <span class="pulse-dot"></span>
+        <span>⚡ SỰ KIỆN NỔ HŨ SHOPEE MALL - GIẢM ĐẾN 70% | KẾT THÚC TRONG 02 : 45 : 18</span>
+    </div>
+
+    <div class="container">
+        <!-- Hero Banner -->
+        <div class="hero-section">
+            <span class="hero-badge">💄 BEAUTY & SKINCARE MALL</span>
+            <h1 class="hero-title">TOP 100 SẢN PHẨM BÁN CHẠY NHẤT - MỸ PHẨM & SKINCARE VIP</h1>
+            <p class="hero-subtitle">Bảng Xếp Hạng 100 Deal Hot Shopee Mall Được Chọn Lọc & Kiểm Định Chất Lượng 100% Chính Hãng</p>
+            <div class="seller-chip">
+                👤 Quản lý Gian hàng: <strong>Nguyễn Hồng Nhung</strong> (Chuyên Gia Skincare Y Khoa)
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-nav">
+            <button class="filter-btn active">🔥 tất Cả 100 Deal Hot</button>
+            <button class="filter-btn">🏆 Bán Chạy Nhất Shopee</button>
+            <button class="filter-btn">⚡ Flash Sale -70%</button>
+            <button class="filter-btn">🚚 Miễn Phí Vận Chuyển 0đ</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #1</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #1</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">140,000đ</span>
+                        <span class="orig-price">350,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_1" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #2</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #2</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">182,700đ</span>
+                        <span class="orig-price">609,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_2" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #3</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #3</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">307,500đ</span>
+                        <span class="orig-price">1,025,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_3" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #4</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #4</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">354,750đ</span>
+                        <span class="orig-price">645,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_4" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #5</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #5</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">485,550đ</span>
+                        <span class="orig-price">747,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_5" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #6</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #6</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">552,000đ</span>
+                        <span class="orig-price">1,104,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_6" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #7</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #7</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">294,900đ</span>
+                        <span class="orig-price">983,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_7" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #8</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #8</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">360,750đ</span>
+                        <span class="orig-price">555,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_8" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #9</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #9</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">335,700đ</span>
+                        <span class="orig-price">1,119,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_9" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #10</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #10</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">406,900đ</span>
+                        <span class="orig-price">626,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_10" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #11</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #11</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">647,000đ</span>
+                        <span class="orig-price">1,294,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_11" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #12</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #12</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">440,000đ</span>
+                        <span class="orig-price">1,100,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_12" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #13</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #13</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">216,300đ</span>
+                        <span class="orig-price">721,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_13" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #14</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #14</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">5.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">939,900đ</span>
+                        <span class="orig-price">1,446,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_14" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #15</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #15</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">484,000đ</span>
+                        <span class="orig-price">1,210,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_15" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #16</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #16</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">474,500đ</span>
+                        <span class="orig-price">949,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_16" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #17</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #17</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">780,650đ</span>
+                        <span class="orig-price">1,201,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_17" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #18</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #18</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">166,000đ</span>
+                        <span class="orig-price">415,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_18" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #19</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #19</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">605,000đ</span>
+                        <span class="orig-price">1,210,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_19" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #20</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #20</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">595,400đ</span>
+                        <span class="orig-price">916,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_20" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #21</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #21</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">798,500đ</span>
+                        <span class="orig-price">1,597,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_21" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #22</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #22</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">460,900đ</span>
+                        <span class="orig-price">838,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_22" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #23</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #23</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">18.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">285,500đ</span>
+                        <span class="orig-price">571,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_23" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #24</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #24</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">433,200đ</span>
+                        <span class="orig-price">1,444,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_24" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #25</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #25</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">290,400đ</span>
+                        <span class="orig-price">968,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_25" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #26</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #26</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">321,200đ</span>
+                        <span class="orig-price">803,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_26" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #27</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #27</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">323,200đ</span>
+                        <span class="orig-price">808,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_27" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #28</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #28</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">444,000đ</span>
+                        <span class="orig-price">1,110,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_28" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #29</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #29</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">17.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">707,500đ</span>
+                        <span class="orig-price">1,415,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_29" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #30</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #30</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">691,350đ</span>
+                        <span class="orig-price">1,257,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_30" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #31</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #31</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">658,450đ</span>
+                        <span class="orig-price">1,013,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_31" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #32</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #32</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">980,200đ</span>
+                        <span class="orig-price">1,508,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_32" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #33</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #33</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">158,100đ</span>
+                        <span class="orig-price">527,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_33" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #34</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #34</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">266,500đ</span>
+                        <span class="orig-price">533,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_34" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #35</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #35</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">240,000đ</span>
+                        <span class="orig-price">600,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_35" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #36</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #36</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">560,400đ</span>
+                        <span class="orig-price">1,401,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_36" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #37</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #37</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">670,150đ</span>
+                        <span class="orig-price">1,031,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_37" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #38</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #38</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">494,450đ</span>
+                        <span class="orig-price">899,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_38" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #39</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #39</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">488,150đ</span>
+                        <span class="orig-price">751,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_39" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #40</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #40</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">463,450đ</span>
+                        <span class="orig-price">713,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_40" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #41</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #41</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">535,200đ</span>
+                        <span class="orig-price">1,338,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_41" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #42</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #42</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">377,200đ</span>
+                        <span class="orig-price">943,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_42" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #43</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #43</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">25.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">443,300đ</span>
+                        <span class="orig-price">806,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_43" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #44</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #44</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">687,000đ</span>
+                        <span class="orig-price">1,374,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_44" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #45</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #45</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">288,900đ</span>
+                        <span class="orig-price">963,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_45" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #46</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #46</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">329,200đ</span>
+                        <span class="orig-price">823,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_46" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #47</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #47</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">475,200đ</span>
+                        <span class="orig-price">1,188,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_47" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #48</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #48</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">14.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">250,800đ</span>
+                        <span class="orig-price">456,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_48" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #49</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #49</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">854,100đ</span>
+                        <span class="orig-price">1,314,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_49" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #50</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #50</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">292,800đ</span>
+                        <span class="orig-price">732,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_50" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #51</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #51</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">487,000đ</span>
+                        <span class="orig-price">974,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_51" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #52</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #52</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">18.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">614,900đ</span>
+                        <span class="orig-price">1,118,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_52" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #53</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #53</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">466,800đ</span>
+                        <span class="orig-price">1,167,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_53" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #54</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #54</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">619,200đ</span>
+                        <span class="orig-price">1,548,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_54" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #55</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #55</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">505,050đ</span>
+                        <span class="orig-price">777,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_55" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #56</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #56</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">415,000đ</span>
+                        <span class="orig-price">830,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_56" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #57</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #57</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">655,600đ</span>
+                        <span class="orig-price">1,192,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_57" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #58</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #58</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">254,000đ</span>
+                        <span class="orig-price">635,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_58" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #59</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #59</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">2.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">291,300đ</span>
+                        <span class="orig-price">971,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_59" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #60</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #60</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">256,300đ</span>
+                        <span class="orig-price">466,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_60" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #61</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #61</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">482,000đ</span>
+                        <span class="orig-price">964,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_61" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #62</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #62</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">888,550đ</span>
+                        <span class="orig-price">1,367,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_62" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #63</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #63</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">526,800đ</span>
+                        <span class="orig-price">1,317,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_63" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #64</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #64</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">455,400đ</span>
+                        <span class="orig-price">828,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_64" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #65</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #65</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">12.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">109,500đ</span>
+                        <span class="orig-price">365,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_65" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #66</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #66</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">147,000đ</span>
+                        <span class="orig-price">490,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_66" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #67</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #67</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">1,012,700đ</span>
+                        <span class="orig-price">1,558,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_67" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #68</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #68</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">270,300đ</span>
+                        <span class="orig-price">901,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_68" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #69</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #69</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">325,600đ</span>
+                        <span class="orig-price">592,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_69" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #70</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #70</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.2k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">399,850đ</span>
+                        <span class="orig-price">727,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_70" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #71</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #71</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">385,200đ</span>
+                        <span class="orig-price">963,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_71" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #72</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #72</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">243,100đ</span>
+                        <span class="orig-price">374,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_72" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #73</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #73</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">214,200đ</span>
+                        <span class="orig-price">714,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_73" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #74</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #74</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">13.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">410,000đ</span>
+                        <span class="orig-price">1,025,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_74" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #75</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #75</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">18.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">947,050đ</span>
+                        <span class="orig-price">1,457,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_75" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #76</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #76</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">660,400đ</span>
+                        <span class="orig-price">1,016,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_76" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #77</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #77</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">195,800đ</span>
+                        <span class="orig-price">356,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_77" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #78</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #78</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">16.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">484,900đ</span>
+                        <span class="orig-price">746,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_78" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #79</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #79</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">4.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">889,200đ</span>
+                        <span class="orig-price">1,368,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_79" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #80</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #80</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">254,650đ</span>
+                        <span class="orig-price">463,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_80" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #81</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #81</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">750,750đ</span>
+                        <span class="orig-price">1,155,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_81" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #82</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #82</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.7k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">411,600đ</span>
+                        <span class="orig-price">1,029,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_82" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #83</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #83</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">7.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">476,400đ</span>
+                        <span class="orig-price">1,191,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_83" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #84</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #84</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">212,300đ</span>
+                        <span class="orig-price">386,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_84" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #85</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #85</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">342,400đ</span>
+                        <span class="orig-price">856,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_85" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #86</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #86</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">3.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">173,400đ</span>
+                        <span class="orig-price">578,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_86" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #87</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #87</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">11.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">595,650đ</span>
+                        <span class="orig-price">1,083,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_87" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #88</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #88</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">15.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">562,650đ</span>
+                        <span class="orig-price">1,023,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_88" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #89</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #89</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">24.1k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">475,500đ</span>
+                        <span class="orig-price">951,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_89" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-35%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #90</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #90</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">808,600đ</span>
+                        <span class="orig-price">1,244,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_90" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #91</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Dưỡng Da B5 Phục Hồi Y Khoa Official #91</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">394,000đ</span>
+                        <span class="orig-price">788,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_91" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #92</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Son Môi Velvet Matte Đỏ Rượu Official #92</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">6.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">488,500đ</span>
+                        <span class="orig-price">977,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_92" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-70%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #93</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Nước Tẩy Trang Micellar Cấp Ẩm Official #93</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">20.6k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">374,700đ</span>
+                        <span class="orig-price">1,249,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_93" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #94</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Kem Chống Nắng SPF50+ Anti-UV Official #94</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">23.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">445,600đ</span>
+                        <span class="orig-price">1,114,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_94" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #95</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Tẩy Tế Bào Chết AHA BHA 2% Official #95</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">10.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">572,500đ</span>
+                        <span class="orig-price">1,145,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_95" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #96</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Xịt Khoáng Cấp Ẩm Tự Nhiên Official #96</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">22.3k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">281,600đ</span>
+                        <span class="orig-price">704,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_96" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-45%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #97</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Mặt Nạ Giấy Y Khoa Hàn Quốc Official #97</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">19.8k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">279,950đ</span>
+                        <span class="orig-price">509,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_97" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-60%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #98</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Phấn Phủ Kiềm Dầu 12H Official #98</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">21.4k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">591,600đ</span>
+                        <span class="orig-price">1,479,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_98" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #99</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Sữa Rửa Mặt Tạo Bọt Dịu Nhẹ Official #99</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">8.9k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">639,000đ</span>
+                        <span class="orig-price">1,278,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_99" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge-row">
+                    <span class="discount-badge">-50%</span>
+                    <span class="mall-badge">SHOPEE MALL</span>
+                </div>
+                <div class="prod-img">
+                    <div class="img-placeholder">🛍️ SẢN PHẨM HOT #100</div>
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">Serum Niacinamide 10% Dưỡng Trắng Official #100</h3>
+                    <div class="prod-stats">
+                        <span class="stars">5.0 ⭐⭐⭐⭐⭐</span>
+                        <span class="sold">9.5k đã bán</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="sale-price">525,500đ</span>
+                        <span class="orig-price">1,051,000đ</span>
+                    </div>
+                    <div class="action-btns">
+                        <a href="http://localhost:5000/r/lolideal_beauty_cosmetics_100" class="btn-buy">🛒 MUA NGAY TRÊN SHOPEE</a>
+                        <a href="http://localhost:5000/messenger" class="btn-chat">💬 TƯ VẤN VỚI NHUNG</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Floating Messenger Chat -->
+    <a href="http://localhost:5000/messenger" class="floating-chat">
+        💬 Chat Trực Tiếp Với Nhung
+    </a>
+
+</body>
+</html>

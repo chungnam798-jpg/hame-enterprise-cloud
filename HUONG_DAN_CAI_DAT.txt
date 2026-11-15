@@ -1,0 +1,31 @@
+================================================================================
+  HƯỚNG DẪN CÀI ĐẶT & SỬ DỤNG HAME ENTERPRISE (FBPOSTER SUITE)
+================================================================================
+
+1. GIỚI THIỆU:
+   Phần mềm tự động hóa Facebook Marketing, Nuôi Nick, Bán Hàng & Affiliate.
+   Cài đặt và hoạt động ĐỘC LẬP 100% trên máy tính của bạn (không phụ thuộc vào
+   máy tính khác hay server bên ngoài). CSDL SQLite lưu trữ trực tiếp trên máy bạn.
+
+2. CÁCH CÀI ĐẶT TRÊN MÁY TÍNH MỚI (CHỈ CẦN 1 BƯỚC):
+   - Bước 1: Giải nén toàn bộ tệp zip này vào 1 thư mục bất kỳ trên máy bạn
+     (ví dụ: D:\HAME_Enterprise hoặc C:\HAME_Enterprise).
+   - Bước 2: Nhấp đúp chuột vào tệp:
+     👉 1_CLICK_CAI_DAT_VA_CHAY.bat
+   - Hệ thống sẽ tự động kiểm tra Python (tải và cài đặt tự động nếu máy chưa có),
+     cài đặt các thư viện cần thiết, khởi tạo cơ sở dữ liệu và tạo biểu tượng
+     lối tắt "FBPoster Enterprise" ngoài màn hình Desktop.
+
+3. SỬ DỤNG HÀNG NGÀY:
+   - Cách 1: Nhấp đúp vào biểu tượng "FBPoster Enterprise" ngoài màn hình Desktop.
+   - Cách 2: Hoặc nhấp đúp vào tệp: KHOI_DONG_PHAN_MEM.bat trong thư mục này.
+   - Trình duyệt sẽ tự động mở trang quản trị tại: http://localhost:5000
+
+4. CHIA SẺ TRUY CẬP RA NGOÀI / ĐIỆN THOẠI (TÙY CHỌN):
+   - Nếu bạn muốn truy cập phần mềm từ điện thoại hoặc chia sẻ link Landing Page
+     với người khác qua mạng 4G/Internet mà không cần chung Wi-Fi:
+     👉 Nhấp đúp chuột vào: MO_TEN_MIEN_ONLINE_CLOUDFLARE.bat
+     (Hệ thống sẽ cấp cho bạn 1 đường link HTTPS miễn phí từ Cloudflare).
+
+Chúc bạn khai thác tối đa hiệu quả kinh doanh cùng HAME Enterprise!
+================================================================================

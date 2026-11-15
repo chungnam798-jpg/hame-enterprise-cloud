@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/hong-nhung-skincare-vip",
+      "dest": "/hong-nhung-skincare-vip.html"
+    },
+    {
+      "src": "/mai-anh-balo-oxford",
+      "dest": "/mai-anh-balo-oxford.html"
+    },
+    {
+      "src": "/khanh-linh-gia-dung-smart",
+      "dest": "/khanh-linh-gia-dung-smart.html"
+    },
+    {
+      "src": "/minh-thu-sneaker-auth",
+      "dest": "/minh-thu-sneaker-auth.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HAME Enterprise - Facebook Automation & Affiliate Suite",
+  "short_name": "FBPoster Enterprise",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0c0f",
+  "theme_color": "#1e293b",
+  "description": "Phần mềm tự động hóa Facebook Marketing & Chuyển đổi số Doanh Thu Affiliate",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/124/124010.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/124/124010.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
